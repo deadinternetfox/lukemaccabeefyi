@@ -1,30 +1,54 @@
 require('dotenv').config();
-const { PineconeClient } = require('@pinecone-database/pinecone');
-const { OpenAI } = require('openai');
 const axios = require('axios');
-const fs = require('fs');
-const path = require('path');
+const { getEmbedding } = require('./openai');
 
-const pinecone = new PineconeClient();
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+async function searchDocs(query, isPetSitting = false) {
+    try {
+        console.log('Searching docs for:', query);
+        const queryEmbedding = await getEmbedding(query);
+        
+        const response = await axios({
+            method: 'post',
+            url: `${process.env.PINECONE_HOST}/query`,
+            headers: {
+                'Api-Key': process.env.PINECONE_API_KEY,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            data: {
+                vector: queryEmbedding,
+                topK: 3,
+                includeMetadata: true
+            }
+        });
 
-async function getEmbedding(text) {
-    const response = await openai.embeddings.create({
-        model: 'text-embedding-3-large',
-        input: text,
-    });
-    return response.data[0].embedding;
+        console.log('Raw Pinecone response:', JSON.stringify(response.data, null, 2));
+
+        const matches = response.data.matches
+            .filter(match => {
+                const threshold = isPetSitting ? 0.35 : 0.5;
+                return match.score > threshold;
+            })
+            .map(match => {
+                console.log('Processing match with full metadata:', match);
+                return {
+                    content: match.metadata?.text || match.metadata?.content || '',
+                    source: match.metadata?.filename || '',
+                    score: match.score
+                };
+            })
+            .filter(match => match.content && match.content.trim() !== '');
+
+        console.log('Processed matches:', JSON.stringify(matches, null, 2));
+
+        return {
+            relevantContent: matches.map(m => m.content).join('\n\n'),
+            sources: matches.map(m => `${m.source} (${Math.round(m.score * 100)}% match)`)
+        };
+    } catch (error) {
+        console.error('Error in searchDocs:', error);
+        return { relevantContent: '', sources: [] };
+    }
 }
 
-async function searchDocs(query) {
-    const results = await similarity.search(query);
-    return results.map(result => ({
-        ...result,
-        isMediaDescription: result.document.type === 'image-description',
-        mediaFiles: result.document.mediaFiles || []
-    }));
-}
-
-module.exports = {
-    searchDocs
-};
+module.exports = { searchDocs };

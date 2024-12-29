@@ -1,7 +1,7 @@
 .services-header {
     text-align: center;
-    padding: 40px 20px;
-    background: rgba(0, 0, 0, 0.85);
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.8);
     border-bottom: 1px solid rgba(0, 255, 0, 0.3);
 }
 
@@ -13,18 +13,18 @@
 }
 
 .services-nav {
-    margin: 20px 0;
+    margin-top: 1rem;
     text-align: center;
 }
 
 .services-nav a {
     color: #0f0;
     text-decoration: none;
-    margin: 0 15px;
-    padding: 5px 15px;
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
     border: 1px solid rgba(0, 255, 0, 0.3);
-    border-radius: 20px;
-    transition: all 0.3s ease;
+    border-radius: 5px;
+    transition: background 0.3s ease;
 }
 
 .services-nav a:hover,
@@ -36,14 +36,14 @@
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    padding: 40px 20px;
+    gap: 2rem;
+    padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .service-card {
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.8);
     border: 1px solid rgba(0, 255, 0, 0.3);
     border-radius: 10px;
     overflow: hidden;
@@ -52,6 +52,7 @@
 
 .service-card:hover {
     transform: translateY(-5px);
+    border-color: rgba(0, 255, 0, 0.8);
 }
 
 .service-image {
@@ -62,7 +63,7 @@
 }
 
 .service-content {
-    padding: 20px;
+    padding: 1.5rem;
     color: #0f0;
 }
 
@@ -79,26 +80,27 @@
 .service-features {
     list-style: none;
     padding: 0;
-    margin: 20px 0;
+    margin: 1rem 0;
 }
 
 .service-features li {
-    margin: 10px 0;
-    padding-left: 25px;
+    color: #0f0;
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
     position: relative;
 }
 
 .service-features li::before {
-    content: '→';
+    content: "•";
+    color: #0f0;
     position: absolute;
     left: 0;
-    color: rgba(0, 255, 0, 0.8);
 }
 
 .price-range {
-    font-size: 1.2em;
-    color: rgba(0, 255, 0, 0.9);
-    margin: 20px 0;
+    color: #0f0;
+    font-size: 1.2rem;
+    margin: 1rem 0;
     text-align: center;
     padding: 10px;
     border-top: 1px solid rgba(0, 255, 0, 0.3);
@@ -112,8 +114,9 @@
 
 .cta-button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 0.8rem 1.5rem;
     background: rgba(0, 255, 0, 0.2);
+    border: 1px solid rgba(0, 255, 0, 0.5);
     color: #0f0;
     text-decoration: none;
     border-radius: 5px;
@@ -125,6 +128,7 @@
 
 .cta-button:hover {
     background: rgba(0, 255, 0, 0.3);
+    border-color: rgba(0, 255, 0, 0.8);
 }
 
 @media (max-width: 768px) {

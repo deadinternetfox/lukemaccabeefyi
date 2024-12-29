@@ -7,6 +7,7 @@ const openAI = require('./openai');
 const fs = require('fs');
 const { exec } = require('child_process');
 const { searchDocs } = require('./searchDocs');
+const sessionManager = require('./sessionManager');
 
 const PORT = process.env.PORT || 3000;
 
@@ -88,9 +89,14 @@ app.post('/api/novelai', async (req, res) => {
     }
 });
 
+// Add session cleanup interval
+setInterval(() => {
+    sessionManager.cleanOldSessions();
+}, 3600000); // Clean every hour
+
 // OpenAI endpoint
 app.post('/api/openai', async (req, res) => {
-    const { input, conversation_history = [] } = req.body;
+    const { input, conversation_history = [], context = '', sessionId } = req.body;
 
     if (!input || typeof input !== 'string') {
         return res.status(400).json({ 
@@ -100,17 +106,30 @@ app.post('/api/openai', async (req, res) => {
     }
 
     try {
-        const output = await openAI.generateResponse(input, conversation_history);
-        const sources = await searchDocs(input); // Add this line
+        // Get or create session
+        const session = sessionManager.createSession(sessionId);
         
-        if (!output) {
-            throw new Error('Empty response from OpenAI');
-        }
+        const isPetSitting = context.toLowerCase().includes('pet') && 
+                           context.toLowerCase().includes('sitting');
+        
+        const searchResults = await searchDocs(input, isPetSitting);
+        
+        // Use session's conversation history
+        const output = await openAI.generateResponse(
+            input, 
+            session.conversationHistory,
+            searchResults.relevantContent
+        );
 
+        // Update conversation history
+        session.conversationHistory.push({ role: 'user', content: input });
+        session.conversationHistory.push({ role: 'assistant', content: output });
+        sessionManager.updateSession(sessionId, session.conversationHistory);
+        
         res.json({ 
             status: 'complete', 
             text: output,
-            sources // Add this line
+            sources: searchResults.sources
         });
     } catch (error) {
         console.error('OpenAI Error:', error);
@@ -129,6 +148,26 @@ app.post('/api/llm', async (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
     console.log(`Server is running on port ${PORT}`);
+    
+    // Force reindex on startup
+    try {
+        await new Promise((resolve, reject) => {
+            exec(`node ${path.join(__dirname, 'vectorizeDocs.js')} --force`, (error, stdout, stderr) => {
+                if (error) {
+                    console.error('Error running vectorizeDocs:', error);
+                    reject(error);
+                    return;
+                }
+                console.log('Vectorization completed:', stdout);
+                if (stderr) {
+                    console.error('Vectorization stderr:', stderr);
+                }
+                resolve();
+            });
+        });
+    } catch (error) {
+        console.error('Failed to reindex documents:', error);
+    }
 });

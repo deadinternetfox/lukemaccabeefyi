@@ -1,3 +1,13 @@
+/* Add to the top of your styles.css */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 255, 0, 0.5) rgba(0, 0, 0, 0.2);
+}
+
+body {
+    overflow-y: scroll; /* Ensure scrollbar is always visible to prevent layout shifts */
+}
+
 body {
     /* Remove or comment out the existing gradient and animation */
     /* background: linear-gradient(-45deg, #cfd9df, #e2ebf0, #e2ebf0, #cfd9df);

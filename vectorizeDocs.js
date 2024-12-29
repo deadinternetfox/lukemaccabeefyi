@@ -98,25 +98,25 @@ async function processDocuments(index, docsDir, openai) {
             const lastModified = stats.mtime.toISOString();
             const content = fs.readFileSync(filePath, 'utf-8');
             
-            // Get existing document metadata from Pinecone
-            const existingMetadata = await getDocumentMetadata(index, file);
-            
-            // Skip if document exists and hasn't been modified
-            if (existingMetadata && existingMetadata.timestamp === lastModified) {
-                console.log(`Skipping ${file} - no changes detected`);
-                continue;
-            }
+            console.log(`Processing ${file} with content:`, content);
 
-            console.log(`${existingMetadata ? 'Updating' : 'Processing new file'} ${file}...`);
-
-            console.log('Creating embedding...');
             const embeddingResponse = await openai.embeddings.create({
                 model: 'text-embedding-3-large',
                 input: content,
             });
             const embedding = embeddingResponse.data[0].embedding;
 
-            console.log('Upserting to Pinecone...');
+            // Directly call Pinecone API
+            const vectorData = {
+                id: file,
+                values: embedding,
+                metadata: {
+                    filename: file,
+                    timestamp: lastModified,
+                    text: content // Store content as 'text' field
+                }
+            };
+
             await axios({
                 method: 'post',
                 url: `${process.env.PINECONE_HOST}/vectors/upsert`,
@@ -126,23 +126,13 @@ async function processDocuments(index, docsDir, openai) {
                     'Content-Type': 'application/json'
                 },
                 data: {
-                    vectors: [{
-                        id: file,
-                        values: embedding,
-                        metadata: {
-                            filename: file,
-                            timestamp: lastModified,
-                            content: content  // Add content to metadata
-                        }
-                    }]
+                    vectors: [vectorData]
                 }
             });
-            console.log(`Successfully processed ${file}`);
+
+            console.log(`Successfully processed ${file} with metadata:`, vectorData.metadata);
         } catch (err) {
             console.error(`Error processing file ${file}:`, err);
-            if (err.response) {
-                console.error('Response details:', err.response.data);
-            }
             continue;
         }
     }

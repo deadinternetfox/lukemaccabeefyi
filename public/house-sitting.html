@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet & House Sitting Services - Luke Maccabee</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
-    <link rel="stylesheet" href="/static/css/services.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="static/css/services.css">
+    <link rel="stylesheet" href="static/css/assistant.css"> <!-- Add this line -->
 </head>
 <body>
     <div class="services-header">
@@ -17,34 +18,46 @@
         </nav>
     </div>
 
-    <!-- Move assistant chat here, before services-grid -->
-    <div class="assistant-chat" id="assistant-chat">
-        <div class="chat-toggle" onclick="toggleChat()">
+    <!-- Updated assistant chat markup -->
+    <div class="assistant-chat">
+        <div class="chat-toggle">
             <img src="/static/images/avatar.png" alt="Assistant" class="assistant-avatar">
+            <div class="assistant-label">Click for Virtual Luke!</div>
         </div>
         <div class="chat-window hidden">
             <div class="chat-header">
-                <span>Your Personal Assistant</span>
-                <button class="close-button" onclick="toggleChat()">×</button>
+                <span>Chat with Luke's Assistant</span>
+                <button class="close-button">×</button>
             </div>
             <div class="chat-messages">
                 <div class="message bot">
                     <div class="message-content">
-                        Hello! I can help you find the perfect pet and house sitting package. Would you like to know about our free house sitting for stays over two weeks?
+                        <div class="message-label">Luke:</div>
+                        <div class="message-text">Hi! I'm Luke's assistant. I can help you learn more about our pet and house sitting services. What would you like to know?</div>
                     </div>
                 </div>
             </div>
             <div class="chat-input-area">
-                <input type="text" class="chat-input" placeholder="Ask about our services...">
-                <button class="chat-send">Send</button>
+                <div class="prompt-hints">
+                    <button class="prompt-button">Pricing info</button>
+                    <button class="prompt-button">Services offered</button>
+                    <button class="prompt-button">Booking process</button>
+                </div>
+                <div class="input-with-button">
+                    <input type="text" class="chat-input" placeholder="Ask about our services...">
+                    <button class="chat-send">
+                        <span class="button-text">Send</span>
+                    </button>
+                </div>
             </div>
         </div>
+        <div class="chat-overlay"></div>
     </div>
 
     <div class="services-grid">
         <!-- Pet Sitting Card -->
         <div class="service-card">
-            <img src="/static/images/pet-sitting.jpg" alt="Pet Sitting" class="service-image">
+            <img src="/static/images/pet-media/Naked.jpg" alt="Placeholder" class="service-image">
             <div class="service-content">
                 <h3>Pet Sitting Services</h3>
                 <p>Professional and caring pet sitting services for all your furry friends.</p>
@@ -65,7 +78,7 @@
 
         <!-- House Sitting Card -->
         <div class="service-card">
-            <img src="/static/images/house-sitting.jpg" alt="House Sitting" class="service-image">
+            <img src="/static/images/pet-media/Naked.jpg" alt="Placeholder" class="service-image">
             <div class="service-content">
                 <h3>House Sitting Services</h3>
                 <p>Keep your home safe and maintained while you're away.</p>
@@ -86,7 +99,7 @@
 
         <!-- Combined Services Card -->
         <div class="service-card">
-            <img src="/static/images/travel/with-animals.jpg" alt="Luke's Travel Experience with Animals" class="service-image">
+            <img src="/static/images/pet-media/Naked.jpg" alt="Placeholder" class="service-image">
             <div class="service-content">
                 <h3>Combined Care Package</h3>
                 <p>Comprehensive pet and house sitting services for complete peace of mind.</p>
