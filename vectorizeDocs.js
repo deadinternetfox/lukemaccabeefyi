@@ -96,6 +96,7 @@ async function processDocuments(index, docsDir, openai) {
             const filePath = path.join(docsDir, file);
             const stats = fs.statSync(filePath);
             const lastModified = stats.mtime.toISOString();
+            const content = fs.readFileSync(filePath, 'utf-8');
             
             // Get existing document metadata from Pinecone
             const existingMetadata = await getDocumentMetadata(index, file);
@@ -107,7 +108,6 @@ async function processDocuments(index, docsDir, openai) {
             }
 
             console.log(`${existingMetadata ? 'Updating' : 'Processing new file'} ${file}...`);
-            const content = fs.readFileSync(filePath, 'utf-8');
 
             console.log('Creating embedding...');
             const embeddingResponse = await openai.embeddings.create({
@@ -131,7 +131,8 @@ async function processDocuments(index, docsDir, openai) {
                         values: embedding,
                         metadata: {
                             filename: file,
-                            timestamp: lastModified
+                            timestamp: lastModified,
+                            content: content  // Add content to metadata
                         }
                     }]
                 }
@@ -147,8 +148,34 @@ async function processDocuments(index, docsDir, openai) {
     }
 }
 
-// Update the main function
-(async () => {
+// Add function to process image descriptions
+async function processImageDescriptions() {
+    const imageDir = path.join(__dirname, 'public', 'static', 'images', 'pet-media');
+    const files = await fs.promises.readdir(imageDir);
+    
+    for (const file of files) {
+        if (file.endsWith('.txt')) {
+            const baseName = file.replace('.txt', '');
+            const content = await fs.promises.readFile(path.join(imageDir, file), 'utf-8');
+            const imageFiles = files.filter(f => 
+                f.startsWith(baseName) && 
+                (f.endsWith('.jpg') || f.endsWith('.png') || f.endsWith('.mp4'))
+            );
+
+            if (imageFiles.length > 0) {
+                documents.push({
+                    content: content,
+                    filename: `pet-media/${baseName}`,
+                    mediaFiles: imageFiles.map(f => `/static/images/pet-media/${f}`),
+                    type: 'image-description'
+                });
+            }
+        }
+    }
+}
+
+// Update the main vectorization function
+async function vectorizeDocs() {
     try {
         const pinecone = await retry(() => initPinecone());
         const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -162,6 +189,7 @@ async function processDocuments(index, docsDir, openai) {
         }
 
         await processDocuments(index, docsDir, openai);
+        await processImageDescriptions();
         console.log('Vectorization completed successfully');
     } catch (err) {
         console.error('Fatal error:', {
@@ -172,4 +200,8 @@ async function processDocuments(index, docsDir, openai) {
         });
         process.exit(1);
     }
+}
+
+(async () => {
+    await vectorizeDocs();
 })();

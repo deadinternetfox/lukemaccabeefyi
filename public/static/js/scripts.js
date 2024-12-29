@@ -140,6 +140,9 @@ document.addEventListener('DOMContentLoaded', () => {
     async function sendMessage() {
         const message = chatInput.value.trim();
         if (message !== '') {
+            // Hide prompt hints after first message
+            document.querySelector('.prompt-hints').classList.add('hidden');
+            
             addMessage('user', message);
             conversationHistory.push({ role: 'user', content: message });
             chatInput.value = '';

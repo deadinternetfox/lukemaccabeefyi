@@ -3,25 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>House Sitting Services - Luke Maccabee</title>
+    <title>Pet & House Sitting Services - Luke Maccabee</title>
     <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/services.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>House Sitting Services</h1>
-            <nav>
-                <a href="/">Home</a>
-                <a href="/house-sitting" class="active">House Sitting</a>
-            </nav>
-        </header>
-        
-        <main>
-            <section class="content">
-                <h2>Professional House Sitting Services</h2>
-                <p>Coming soon - Page under construction</p>
-            </section>
-        </main>
+    <div class="services-header">
+        <h1>Pet & House Sitting Services</h1>
+        <nav class="services-nav">
+            <a href="/">Home</a>
+            <a href="/house-sitting" class="active">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </div>
+
+    <!-- Move assistant chat here, before services-grid -->
+    <div class="assistant-chat" id="assistant-chat">
+        <div class="chat-toggle" onclick="toggleChat()">
+            <img src="/static/images/avatar.png" alt="Assistant" class="assistant-avatar">
+        </div>
+        <div class="chat-window hidden">
+            <div class="chat-header">
+                <span>Your Personal Assistant</span>
+                <button class="close-button" onclick="toggleChat()">×</button>
+            </div>
+            <div class="chat-messages">
+                <div class="message bot">
+                    <div class="message-content">
+                        Hello! I can help you find the perfect pet and house sitting package. Would you like to know about our free house sitting for stays over two weeks?
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" class="chat-input" placeholder="Ask about our services...">
+                <button class="chat-send">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="services-grid">
+        <!-- Pet Sitting Card -->
+        <div class="service-card">
+            <img src="/static/images/pet-sitting.jpg" alt="Pet Sitting" class="service-image">
+            <div class="service-content">
+                <h3>Pet Sitting Services</h3>
+                <p>Professional and caring pet sitting services for all your furry friends.</p>
+                <ul class="service-features">
+                    <li>Daily dog walks (30-60 minutes)</li>
+                    <li>Cat sitting and feeding visits</li>
+                    <li>Small animal care</li>
+                    <li>Medication administration</li>
+                    <li>GPS tracked walks</li>
+                    <li>Photo updates via WhatsApp</li>
+                </ul>
+                <div class="price-range">
+                    £30-75 per visit
+                </div>
+                <a href="#contact" class="cta-button">Book Pet Sitting</a>
+            </div>
+        </div>
+
+        <!-- House Sitting Card -->
+        <div class="service-card">
+            <img src="/static/images/house-sitting.jpg" alt="House Sitting" class="service-image">
+            <div class="service-content">
+                <h3>House Sitting Services</h3>
+                <p>Keep your home safe and maintained while you're away.</p>
+                <ul class="service-features">
+                    <li>Mail collection</li>
+                    <li>Plant watering</li>
+                    <li>Security checks</li>
+                    <li>Basic house maintenance</li>
+                    <li>Key holding service</li>
+                    <li>Daily property checks</li>
+                </ul>
+                <div class="price-range">
+                    Custom quotes available
+                </div>
+                <a href="#contact" class="cta-button">Book House Sitting</a>
+            </div>
+        </div>
+
+        <!-- Combined Services Card -->
+        <div class="service-card">
+            <img src="/static/images/travel/with-animals.jpg" alt="Luke's Travel Experience with Animals" class="service-image">
+            <div class="service-content">
+                <h3>Combined Care Package</h3>
+                <p>Comprehensive pet and house sitting services for complete peace of mind.</p>
+                <ul class="service-features">
+                    <li>Full pet care services</li>
+                    <li>House maintenance</li>
+                    <li>24/7 emergency contact</li>
+                    <li>Daily updates and photos</li>
+                    <li>Flexible scheduling</li>
+                    <li>Insurance covered</li>
+                </ul>
+                <div class="price-range">
+                    Contact for package rates
+                </div>
+                <a href="#contact" class="cta-button">Book Combined Services</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/assistant.js"></script>
 </body>
 </html>

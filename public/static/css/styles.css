@@ -45,7 +45,7 @@ body {
 
 .profile-container {
     text-align: center;
-    margin-top: 30px; /* Reduced from 60px */
+    margin-top: 15px; /* Reduced from 30px */
     position: relative;
 }
 
@@ -69,8 +69,8 @@ body {
     width: 200px; /* Increased to accommodate effects */
     height: 200px;
     margin: 0 auto;
-    margin-bottom: 20px; /* Reduced from 40px */
-    transform: translateY(-10px); /* Move the container up slightly */
+    margin-bottom: 15px; /* Reduced from 20px */
+    transform: translateY(0); /* Move the container up slightly */
 }
 
 .swirl-line {
@@ -581,7 +581,7 @@ body {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /* Mobile Responsive Styles */
@@ -592,11 +592,11 @@ body {
     }
 
     .profile-container {
-        margin-top: 25px; /* Increased from 15px */
+        margin-top: 10px; /* Reduced from 25px */
     }
 
     .avatar-container {
-        margin-bottom: 25px; /* Increased from 15px */
+        margin-bottom: 15px; /* Reduced from 25px */
         transform: translateY(0); /* Removed negative transform */
     }
 

@@ -1,0 +1,291 @@
+.assistant-chat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* Update avatar and chat toggle size */
+.chat-toggle {
+    width: 60px;  /* Reduced from 150px */
+    height: 60px; /* Reduced from 150px */
+    position: fixed; /* Changed from relative */
+    top: 20px;    /* Added position from top */
+    left: 50%;    /* Center horizontally */
+    transform: translateX(-50%); /* Perfect centering */
+    margin: 0;    /* Remove margin */
+}
+
+.chat-toggle:hover {
+    transform: scale(1.1);
+}
+
+.assistant-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid rgba(0, 255, 0, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+
+.swirl-effect {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: rgba(0, 255, 0, 0.5);
+    animation: swirl 2s linear infinite;
+}
+
+/* Update swirl line sizes to match new avatar size */
+.swirl-line {
+    width: 70px;  /* Adjusted from 160px */
+    height: 70px; /* Adjusted from 160px */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 50%;
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.8);
+    pointer-events: none;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.chat-toggle.active .swirl-line {
+    opacity: 1;
+    animation: swirlRotate 8s linear infinite;
+}
+
+.swirl-line::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #0f0;
+    border-radius: 50%;
+    top: -2px;
+    left: 50%;
+    box-shadow: 0 0 8px #0f0;
+}
+
+@keyframes swirl {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes swirlRotate {
+    0% { transform: translate(-50%, -50%) rotate(0deg) scale(0.8); }
+    50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.2); }
+    100% { transform: translate(-50%, -50%) rotate(360deg) scale(0.8); }
+}
+
+.chat-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 500px;
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    z-index: 999;
+}
+
+.chat-window.hidden {
+    display: none;
+}
+
+.chat-header {
+    background: rgba(0, 0, 0, 0.95);
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Style the close button like the index page */
+.close-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(0, 255, 0, 0.2);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    color: #0f0;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-button:hover {
+    background: rgba(0, 255, 0, 0.3);
+    border-color: rgba(0, 255, 0, 0.6);
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+}
+
+.chat-header span {
+    color: #0f0;
+    font-size: 1.1em;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.chat-input-area {
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    border-top: 1px solid rgba(0, 255, 0, 0.3);
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input {
+    width: calc(100% - 100px);
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 4px;
+    color: #0f0;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.chat-input:focus {
+    outline: none;
+    border-color: rgba(0, 255, 0, 0.8);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+/* Match send button style with index page */
+.chat-send {
+    position: relative;
+    width: 80px;
+    padding: 12px;
+    margin-left: 10px;
+    background: rgba(0, 255, 0, 0.6);
+    color: #000;
+    border: none;
+    font-weight: 500;
+    min-width: 80px;
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.chat-send:hover {
+    background: rgba(0, 255, 0, 0.8);
+}
+
+/* Remove the button effect since it's not on index */
+.button-effect {
+    display: none;
+}
+
+.button-text {
+    position: relative;
+    z-index: 1;
+}
+
+.message {
+    margin: 10px;
+    max-width: 80%;
+}
+
+.message.user {
+    margin-left: auto;
+}
+
+.message.bot {
+    margin-right: auto;
+}
+
+.message-content {
+    padding: 12px 15px;
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 10px;
+    color: #0f0;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.message.user .message-content {
+    background: rgba(0, 255, 0, 0.15);
+    border-bottom-right-radius: 0;
+}
+
+.message.bot .message-content {
+    background: rgba(0, 0, 0, 0.6);
+    border-bottom-left-radius: 0;
+}
+
+.media-content {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 100%;
+}
+
+.response-media {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    object-fit: cover;
+}
+
+video.response-media {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .response-media {
+        max-width: 150px;
+        max-height: 150px;
+    }
+
+    .chat-window {
+        width: 90%;
+        height: 80vh;
+        max-height: 500px;
+    }
+
+    .chat-input {
+        width: calc(100% - 90px);
+    }
+}
+
+/* Add overlay for when chat is open */
+.chat-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(3px);
+    display: none;
+    z-index: 998;
+}
+
+.chat-overlay.active {
+    display: block;
+}

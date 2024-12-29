@@ -12,67 +12,65 @@ async function generateResponse(prompt, conversationHistory = []) {
     // Sanitize and validate input
     prompt = String(prompt).trim();
     if (!prompt) {
-        throw new Error('Empty prompt');
+        throw new Error('Prompt cannot be empty');
     }
 
     console.log('Generating response with:', { prompt, historyLength: conversationHistory.length });
 
-    let historyText = conversationHistory.map(message => {
-        return `${message.role === 'user' ? 'Client' : 'Luke'}: ${message.content}`;
+    const historyText = conversationHistory.map(message => {
+        return `${message.role === 'user' ? 'Client' : 'Assistant'}: ${message.content}`;
     }).join('\n');
 
-    // Add top relevant docs to basePrompt
+    // Add relevant docs to base prompt
     const relevantDocs = await searchDocs(prompt);
-    const docSnippets = relevantDocs.map(d => 
-        `Content from ${d.filename}:\n${d.content}`
-    ).join('\n\n');
-    
+    const docSnippets = relevantDocs.map(doc => `Content from ${doc.filename}:\n${doc.content}`).join('\n\n');
+
     const basePrompt = `***
-[Conversation History]: 
-${conversationHistory.map(msg => `${msg.role === 'user' ? 'User' : 'Luke'}: ${msg.content}`).join('\n')}
+[Conversation History]:
+${historyText || 'None'}
 
 [Reference Documents]:
-${docSnippets}
+${docSnippets || 'None'}
 
-Instructions: You are Luke Maccabee, a pet sitter and property manager. Important rules:
-1. Only use information directly from the reference documents
-2. If information isn't in the documents, say "I don't have information about that"
-3. Never make assumptions or create information
-4. Be direct about what you don't know
-5. Only discuss pet sitting and property management services
+Instructions: You are an AI assistant. Follow these rules:
+1. Use the provided context and documents for your response.
+2. If the required information is not available, state "I don\'t have information about that".
+3. Be concise, accurate, and professional.
+4. Never fabricate or assume information.
 
-Luke:`;
+Task:
+${prompt}
+
+Response:`;
 
     const payload = {
         input: basePrompt,
-        model: "6B-v4", // do not change
+        model: "6B-v4", // NovelAI model identifier
         parameters: {
             use_string: true,
-            temperature: 0.6,
-            min_length: 20,
-            max_length: 200,
-            top_k: 20,
-            top_p: 0.8,
-            tail_free_sampling: 0.92,
-            repetition_penalty: 1.1,
+            temperature: 0.7,
+            min_length: 50,
+            max_length: 250,
+            top_k: 40,
+            top_p: 0.9,
+            repetition_penalty: 1.2,
             repetition_penalty_range: 1024,
             repetition_penalty_slope: 0.1,
             do_sample: true,
             early_stopping: false,
-            num_beams: 5,
-            bad_words_ids: [[0]],
+            num_beams: 1,
             generate_until_sentence: true,
-            prefix: "Luke:" // Helps format the response appropriately
+            prefix: "Assistant:"
         }
     };
 
     try {
-        // Test API key format
-        if (!NOVELAI_API_KEY.match(/^pst-[a-zA-Z0-9]{64}$/)) {
+        // Validate API key format
+        if (!/^[a-zA-Z0-9]{64}$/.test(NOVELAI_API_KEY)) {
             throw new Error('Invalid NovelAI API key format');
         }
 
-        console.log('Making request to NovelAI API...');
+        console.log('Sending request to NovelAI API...');
 
         const response = await axios.post(API_URL, payload, {
             headers: {
@@ -80,8 +78,7 @@ Luke:`;
                 'Authorization': `Bearer ${NOVELAI_API_KEY}`
             },
             timeout: 30000,
-            // Accept both 200 and 201 status codes
-            validateStatus: status => [200, 201].includes(status)
+            validateStatus: status => status >= 200 && status < 300
         });
 
         console.log('Response received:', {
@@ -90,19 +87,15 @@ Luke:`;
             dataLength: response.data?.output?.length || 0
         });
 
-        // Check if response.data is valid and has output
-        if (!response.data || typeof response.data.output !== 'string') {
-            console.error('Invalid response structure:', response.data);
-            throw new Error('Invalid response format from NovelAI');
+        // Validate and parse response
+        const output = response.data?.output;
+        if (!output || typeof output !== 'string') {
+            throw new Error('Invalid response format from NovelAI API');
         }
 
-        // Get first line of response and clean it
-        const lines = response.data.output.split('\n');
-        const firstLine = lines[0].trim();
-        
-        // Clean up response spacing
-        const cleanResponse = firstLine
-            .replace(/^Luke:\s*/i, '')
+        // Clean and format response
+        const cleanResponse = output
+            .replace(/^Assistant:\s*/i, '')
             .replace(/([.,!?])([A-Za-z])/g, '$1 $2')
             .replace(/,([^\s])/g, ', $1')
             .replace(/\.([^\s])/g, '. $1')
@@ -110,7 +103,7 @@ Luke:`;
             .trim();
 
         if (!cleanResponse) {
-            throw new Error('Empty response from NovelAI');
+            throw new Error('Received empty response from NovelAI');
         }
 
         return cleanResponse;
@@ -133,8 +126,7 @@ Luke:`;
         console.error('NovelAI Error Details:', {
             message: error.message,
             response: error.response?.data,
-            status: error.response?.status,
-            headers: error.response?.headers
+            status: error.response?.status
         });
         throw error;
     }
