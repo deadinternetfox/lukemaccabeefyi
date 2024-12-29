@@ -145,3 +145,36 @@
         font-size: 2em;
     }
 }
+
+/* Override default styles for pet-sitting page */
+body.pet-sitting .services-header {
+    background: linear-gradient(135deg, var(--pet-primary), #FF9F8E);
+    border-bottom: none;
+}
+
+body.pet-sitting .services-header h1 {
+    color: white;
+    text-shadow: none;
+}
+
+body.pet-sitting .services-nav a {
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+body.pet-sitting .services-nav a:hover,
+body.pet-sitting .services-nav a.active {
+    background: white;
+    color: var(--pet-primary);
+    border-color: white;
+}
+
+/* Remove any conflicting colors */
+body.pet-sitting .service-features li::before {
+    color: var(--pet-accent);
+}
+
+body.pet-sitting .price-range {
+    border-color: var(--pet-accent);
+}

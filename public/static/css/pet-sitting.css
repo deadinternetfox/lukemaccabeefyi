@@ -1,0 +1,609 @@
+:root {
+    --pet-primary: #FF8B7E;     /* Warm coral */
+    --pet-secondary: #84CCB0;   /* Fresh mint */
+    --pet-accent: #FFC47E;      /* Warm orange */
+    --pet-text: #525B76;        /* Soft navy */
+    --pet-light: #FFF9F5;       /* Warm white */
+    --pet-shadow: rgba(255, 139, 126, 0.15);
+}
+
+body.pet-sitting {
+    background: var(--pet-light);
+    color: var(--pet-text);
+    scrollbar-width: thin;
+    scrollbar-color: var(--pet-primary) var(--pet-light);
+}
+
+body.pet-sitting {
+    scrollbar-width: thin;
+    scrollbar-color: var(--pet-primary) var(--pet-light);
+}
+
+body.pet-sitting::-webkit-scrollbar {
+    width: 12px;
+}
+
+body.pet-sitting::-webkit-scrollbar-track {
+    background: var(--pet-light);
+    border-radius: 10px;
+}
+
+body.pet-sitting::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--pet-primary), var(--pet-accent));
+    border-radius: 10px;
+    border: 3px solid var(--pet-light);
+}
+
+body.pet-sitting::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--pet-accent), var(--pet-secondary));
+}
+
+/* Background animations */
+.pet-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.floating-element {
+    position: absolute;
+    opacity: 0;
+    filter: opacity(0.7);
+    text-shadow: 0 0 10px var(--pet-shadow);
+}
+
+@keyframes floatAndFade {
+    0% { 
+        opacity: 0;
+        transform: translateY(10px) rotate(0deg) scale(0.8);
+    }
+    20% {
+        opacity: 0.7;
+    }
+    80% {
+        opacity: 0.7;
+    }
+    100% { 
+        opacity: 0;
+        transform: translateY(-20px) rotate(360deg) scale(1.2);
+    }
+}
+
+/* Override service card styles for pet-sitting */
+body.pet-sitting .service-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px var(--pet-shadow);
+    overflow: hidden;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+body.pet-sitting .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px var(--pet-shadow);
+}
+
+body.pet-sitting .services-header {
+    background: linear-gradient(135deg, var(--pet-primary), #FF9F8E);
+    padding: 2.5rem 2rem 3rem;
+    box-shadow: 0 2px 20px var(--pet-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.pet-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+body.pet-sitting .services-header h1 {
+    color: white;
+    text-shadow: none;
+    font-weight: 600;
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem 0;
+}
+
+body.pet-sitting .services-nav {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1.5rem;
+}
+
+body.pet-sitting .services-nav a {
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 25px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+body.pet-sitting .services-nav a:hover,
+body.pet-sitting .services-nav a.active {
+    background: white;
+    color: var(--pet-primary);
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+body.pet-sitting .service-content h3 {
+    color: var(--pet-primary);
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+body.pet-sitting .service-content p {
+    color: var(--pet-text);
+    line-height: 1.6;
+}
+
+body.pet-sitting .service-features {
+    margin: 1.5rem 0;
+}
+
+body.pet-sitting .service-features li {
+    color: var(--pet-text);
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    position: relative;
+}
+
+body.pet-sitting .service-features li::before {
+    content: "🐾";
+    color: var(--pet-accent);
+    position: absolute;
+    left: 0;
+    font-size: 1em;
+    opacity: 0.8;
+}
+
+body.pet-sitting .price-range {
+    color: var(--pet-primary);
+    border: none;
+    background: var(--pet-light);
+    border-radius: 15px;
+    padding: 1rem;
+    font-weight: 600;
+}
+
+body.pet-sitting .cta-button {
+    background: linear-gradient(135deg, var(--pet-primary), #FF9F8E);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+body.pet-sitting .cta-button:hover {
+    background: linear-gradient(135deg, var(--pet-secondary), #98DFC4);
+    transform: translateY(-2px);
+}
+
+/* Chat window updates */
+body.pet-sitting .assistant-chat .chat-window {
+    background: var(--pet-light);
+    border-left: none;
+    box-shadow: -5px 0 25px var(--pet-shadow);
+}
+
+body.pet-sitting .chat-header {
+    background: linear-gradient(135deg, var(--pet-primary), #FF9F8E);
+    color: white;
+    border-bottom: none;
+}
+
+body.pet-sitting .chat-header span {
+    color: white;
+    text-shadow: none;
+}
+
+body.pet-sitting .close-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+body.pet-sitting .close-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+body.pet-sitting .chat-input {
+    border: 1px solid var(--pet-accent);
+    background: var(--pet-light);
+    color: var(--pet-text);
+}
+
+body.pet-sitting .chat-send {
+    background: var(--pet-primary);
+    color: white;
+    border: none;
+}
+
+body.pet-sitting .prompt-button {
+    background: var(--pet-light);
+    border: 1px solid var(--pet-accent);
+    color: var(--pet-primary);
+}
+
+body.pet-sitting .prompt-button:hover {
+    background: var(--pet-accent);
+    color: white;
+}
+
+/* Message styling */
+body.pet-sitting .message.user .message-content {
+    background: var(--pet-light);
+    border: none;
+    color: var(--pet-text);
+}
+
+body.pet-sitting .message.bot .message-content {
+    background: linear-gradient(135deg, var(--pet-primary), #FF9F8E);
+    color: white;
+    border-radius: 20px 20px 20px 0;
+    position: relative;
+}
+
+body.pet-sitting .message-label {
+    color: var(--pet-text);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+body.pet-sitting .message.bot .message-label {
+    color: white;
+    opacity: 0.9;
+}
+
+/* Scrollbar updates */
+body.pet-sitting ::-webkit-scrollbar-track {
+    background: var(--pet-light);
+}
+
+body.pet-sitting ::-webkit-scrollbar-thumb {
+    background: var(--pet-accent);
+    border: 2px solid var(--pet-light);
+}
+
+body.pet-sitting ::-webkit-scrollbar-thumb:hover {
+    background: var(--pet-primary);
+}
+
+body.pet-sitting ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+body.pet-sitting ::-webkit-scrollbar-track {
+    background: var(--pet-light);
+    border-radius: 10px;
+}
+
+body.pet-sitting ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--pet-primary), var(--pet-accent));
+    border-radius: 10px;
+    border: 2px solid var(--pet-light);
+}
+
+body.pet-sitting ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--pet-accent), var(--pet-secondary));
+}
+
+/* Update chat window styling */
+body.pet-sitting .chat-window {
+    background: var(--pet-light);
+    border-left: none;
+    box-shadow: -5px 0 25px var(--pet-shadow);
+}
+
+body.pet-sitting .chat-messages {
+    background: white;
+    padding: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--pet-primary) var(--pet-light);
+}
+
+body.pet-sitting .chat-messages::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+body.pet-sitting .chat-messages::-webkit-scrollbar-track {
+    background: var(--pet-light);
+    border-radius: 10px;
+}
+
+body.pet-sitting .chat-messages::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--pet-primary), var(--pet-accent));
+    border-radius: 10px;
+    border: 2px solid var(--pet-light);
+}
+
+body.pet-sitting .chat-messages::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--pet-accent), var(--pet-secondary));
+}
+
+/* Update chat input area */
+body.pet-sitting .chat-input-area {
+    background: var(--pet-light);
+    border-top: 1px solid rgba(255, 139, 126, 0.2);
+    padding: 15px;
+}
+
+body.pet-sitting .chat-input {
+    background: white;
+    border: 2px solid var(--pet-primary);
+    border-radius: 20px;
+    padding: 12px 20px;
+    color: var(--pet-text);
+    transition: all 0.3s ease;
+}
+
+body.pet-sitting .chat-input:focus {
+    border-color: var(--pet-accent);
+    box-shadow: 0 0 10px var(--pet-shadow);
+    outline: none;
+}
+
+body.pet-sitting .chat-send {
+    background: linear-gradient(135deg, var(--pet-primary), #FF9F8E);
+    border-radius: 20px;
+    padding: 12px 25px;
+    border: none;
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+body.pet-sitting .chat-send:hover {
+    background: linear-gradient(135deg, var(--pet-accent), var(--pet-secondary));
+    transform: translateY(-2px);
+}
+
+/* Update prompt buttons */
+body.pet-sitting .prompt-button {
+    background: white;
+    border: 2px solid var(--pet-primary);
+    color: var(--pet-primary);
+    border-radius: 15px;
+    padding: 8px 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+body.pet-sitting .prompt-button:hover {
+    background: linear-gradient(135deg, var(--pet-primary), #FF9F8E);
+    border-color: transparent;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Update message styling */
+body.pet-sitting .message.user .message-content {
+    background: white;
+    border: 2px solid var(--pet-primary);
+    color: var(--pet-text);
+    border-radius: 20px 20px 0 20px;
+}
+
+body.pet-sitting .message.bot .message-content {
+    background: linear-gradient(135deg, var(--pet-primary), #FF9F8E);
+    color: white;
+    border-radius: 20px 20px 20px 0;
+}
+
+/* Ensure consistent message spacing */
+body.pet-sitting .message {
+    margin-bottom: 1.5rem;
+}
+
+body.pet-sitting .message-content {
+    padding: 1rem 1.2rem;
+}
+
+/* Update typing indicator */
+body.pet-sitting .typing-dots span {
+    background: var(--pet-primary);
+}
+
+/* Override prompt button styles */
+body.pet-sitting .prompt-hints {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+body.pet-sitting .prompt-button {
+    background: var(--pet-light);
+    border: 2px solid var(--pet-primary);
+    color: var(--pet-primary);
+    border-radius: 15px;
+    padding: 8px 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px var(--pet-shadow);
+}
+
+body.pet-sitting .prompt-button:hover {
+    background: linear-gradient(135deg, var(--pet-primary), #FF9F8E);
+    border-color: transparent;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Fix message label colors */
+body.pet-sitting .message-label {
+    color: var(--pet-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    opacity: 1;
+}
+
+body.pet-sitting .message.user .message-label {
+    color: var(--pet-primary);
+}
+
+/* Ensure scrollbar styles are applied */
+body.pet-sitting *::-webkit-scrollbar {
+    width: 10px !important;
+}
+
+body.pet-sitting *::-webkit-scrollbar-track {
+    background: var(--pet-light) !important;
+    border-radius: 10px !important;
+}
+
+body.pet-sitting *::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--pet-primary), var(--pet-accent)) !important;
+    border-radius: 10px !important;
+    border: 2px solid var(--pet-light) !important;
+}
+
+/* Override any conflicting chat styles */
+body.pet-sitting .chat-messages {
+    background: white !important;
+}
+
+body.pet-sitting .message-content {
+    background: white !important;
+    border: 2px solid var(--pet-primary);
+}
+
+body.pet-sitting .message.bot .message-content {
+    background: linear-gradient(135deg, var(--pet-primary), #FF9F8E) !important;
+    border: none;
+}
+
+/* Clean up any remaining dark backgrounds */
+body.pet-sitting .chat-input-area {
+    background: var(--pet-light);
+}
+
+body.pet-sitting .chat-input {
+    background: white;
+    color: var(--pet-text);
+}
+
+/* Remove any remaining green theme elements */
+body.pet-sitting .assistant-label {
+    color: var(--pet-text);
+}
+
+/* Stronger message label overrides */
+body.pet-sitting .message .message-label {
+    color: var(--pet-primary) !important;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    opacity: 1;
+    position: relative;
+    z-index: 2;
+}
+
+body.pet-sitting .message.bot .message-content .message-label {
+    color: var(--pet-text) !important;
+    background: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+/* Global scrollbar overrides */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--pet-primary) var(--pet-light) !important;
+}
+
+*::-webkit-scrollbar {
+    width: 10px !important;
+    height: 10px !important;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--pet-light) !important;
+    border-radius: 10px !important;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--pet-primary), var(--pet-accent)) !important;
+    border-radius: 10px !important;
+    border: 2px solid var(--pet-light) !important;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--pet-accent), var(--pet-secondary)) !important;
+}
+
+/* Ensure chat styles are properly scoped */
+body.pet-sitting .chat-window,
+body.pet-sitting .chat-messages {
+    scrollbar-width: thin;
+    scrollbar-color: var(--pet-primary) var(--pet-light) !important;
+}
+
+/* Override any remaining conflicting styles */
+body.pet-sitting .message-content {
+    background: white !important;
+}
+
+body.pet-sitting .message.bot .message-content {
+    background: linear-gradient(135deg, var(--pet-primary), #FF9F8E) !important;
+}
+
+body.pet-sitting .message.bot .message-text {
+    color: white !important;
+}
+
+/* Update chat input area and prompt hints */
+body.pet-sitting .chat-input-area {
+    background: white !important;
+    border-top: 1px solid var(--pet-primary);
+    padding: 15px;
+}
+
+body.pet-sitting .prompt-hints {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    border-top: 1px solid rgba(255, 139, 126, 0.2);
+    box-shadow: 0 2px 8px var(--pet-shadow);
+}
+
+/* Override any dark backgrounds in chat area */
+body.pet-sitting .chat-window {
+    background: white !important;
+}
+
+body.pet-sitting .chat-messages {
+    background: white !important;
+    padding: 20px;
+}
+
+/* Override any remaining green borders */
+body.pet-sitting .chat-window * {
+    border-color: var(--pet-primary);
+}

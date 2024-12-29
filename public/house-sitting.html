@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet & House Sitting Services - Luke Maccabee</title>
+    <!-- Change the order of CSS files -->
     <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="static/css/assistant.css">
     <link rel="stylesheet" href="static/css/services.css">
-    <link rel="stylesheet" href="static/css/assistant.css"> <!-- Add this line -->
+    <link rel="stylesheet" href="static/css/pet-sitting.css">  <!-- Make sure this is last -->
 </head>
-<body>
+<body class="pet-sitting">  <!-- Add this class -->
     <div class="services-header">
-        <h1>Pet & House Sitting Services</h1>
+        <img src="/static/images/petcarelogo.png" alt="Pet Care Logo" class="pet-logo">
+        <h1>Pet & House Sitting</h1>
         <nav class="services-nav">
             <a href="/">Home</a>
             <a href="/house-sitting" class="active">Services</a>
-            <a href="#contact">Contact</a>
+            <a href="#contact">Book Now</a>
         </nav>
     </div>
 
@@ -120,5 +123,6 @@
     </div>
 
     <script src="/static/js/assistant.js"></script>
+    <script src="/static/js/pet-background.js"></script>  <!-- Add this line -->
 </body>
 </html>

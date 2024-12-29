@@ -54,13 +54,23 @@ function displayMediaContent(mediaFiles) {
 document.addEventListener('DOMContentLoaded', () => {
     createSwirlLines();
     
-    // Add click handlers for chat toggle and close button
     const chatToggle = document.querySelector('.chat-toggle');
     const closeButton = document.querySelector('.close-button');
+    const chatWindow = document.querySelector('.chat-window');
     
     chatToggle.addEventListener('click', toggleChat);
-    closeButton.addEventListener('click', toggleChat);
     
+    // Update close button handler to simply hide the chat
+    closeButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        chatWindow.classList.add('hidden');
+        chatToggle.classList.remove('hidden');
+        const overlay = document.querySelector('.chat-overlay');
+        if (overlay) {
+            overlay.classList.remove('active');
+        }
+    });
+
     const chatInput = document.querySelector('.chat-input');
     const sendButton = document.querySelector('.chat-send');
     const messagesContainer = document.querySelector('.chat-messages');
@@ -73,56 +83,43 @@ document.addEventListener('DOMContentLoaded', () => {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${isBot ? 'bot' : 'user'}`;
         
-        // Add text content
         const textDiv = document.createElement('div');
         textDiv.className = 'message-content';
         
-        // Add label
+        // Create label with proper styling
         const labelDiv = document.createElement('div');
         labelDiv.className = 'message-label';
         labelDiv.textContent = isBot ? 'Luke:' : 'You:';
+        
+        // Ensure label is first child
         textDiv.appendChild(labelDiv);
         
         if (isBot) {
-            // Create typing indicator
-            const typingDiv = document.createElement('div');
-            typingDiv.className = 'typing-indicator';
-            typingDiv.textContent = '...';
-            textDiv.appendChild(typingDiv);
+            const messageText = document.createElement('div');
+            messageText.className = 'message-text';
+            textDiv.appendChild(messageText);
             
-            // Add to messages immediately to show typing
             messageDiv.appendChild(textDiv);
             messagesContainer.appendChild(messageDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
+            
             // Animate text
             let currentText = '';
-            const words = content.trim().split(' '); // Trim content before splitting
+            const words = content.trim().split(' ');
             let wordIndex = 0;
 
             function typeWord() {
                 if (wordIndex < words.length) {
                     currentText += (wordIndex > 0 ? ' ' : '') + words[wordIndex];
-                    textDiv.textContent = currentText;
-                    // Re-add the label after content update
-                    const label = document.createElement('div');
-                    label.className = 'message-label';
-                    label.textContent = 'Luke:';
-                    textDiv.insertBefore(label, textDiv.firstChild);
+                    messageText.textContent = currentText;
                     wordIndex++;
                     messagesContainer.scrollTop = messagesContainer.scrollHeight;
                     setTimeout(typeWord, 50 + Math.random() * 50);
                 }
             }
 
-            setTimeout(typeWord, 500); // Start typing after showing indicator
+            setTimeout(typeWord, 500);
         } else {
-            textDiv.textContent = content.trim(); // Trim user content
-            // Re-add the label for user messages
-            const label = document.createElement('div');
-            label.className = 'message-label';
-            label.textContent = 'You:';
-            textDiv.insertBefore(label, textDiv.firstChild);
+            textDiv.innerHTML += `<div class="message-text">${content.trim()}</div>`;
             messageDiv.appendChild(textDiv);
             messagesContainer.appendChild(messageDiv);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
@@ -259,12 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Re-add the welcome message
         addMessage("Hi! I'm Luke's assistant. I can help you learn more about our services. What would you like to know?", true);
     }
-
-    // Add clear chat handler to close button
-    closeButton.addEventListener('click', () => {
-        toggleChat();
-        clearChatHistory();
-    });
 
     sendButton.addEventListener('click', handleInput);
     chatInput.addEventListener('keypress', (e) => {
