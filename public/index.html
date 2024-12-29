@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luke Maccabee - Portfolio</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div id="welcome-modal" class="modal">
+        <div class="modal-content">
+            <h2>Welcome to my site!</h2>
+            <p>This interactive profile allows you to chat with me using a Large Language Model (LLM). Feel free to ask questions or select a prompt below to learn more about me and my work.</p>
+            <p><small>Note: Enable audio for the full experience</small></p>
+            <button id="modal-close-button" class="modal-button">Got it!</button>
+        </div>
+    </div>
+    <div class="profile-container">
+        <div class="avatar-container">
+            <img src="/static/images/avatar.png" alt="Luke Maccabee" class="profile-photo">
+        </div>
+    </div>
+    <div class="chat-container">
+        <div class="engine-switcher">
+            <button class="engine-button active" data-engine="novelai">NovelAI</button>
+            <button class="engine-button" data-engine="openai">GPT-4</button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <!-- Chat messages will appear here -->
+        </div>
+        <!-- Add prompt hints here -->
+        <div class="prompt-hints">
+            <button class="prompt-button">I want to hire Luke</button>
+            <button class="prompt-button">I need a pet sitter</button>
+            <button class="prompt-button">Tell me about your travels</button>
+            <!-- Add more prompt buttons as needed -->
+        </div>
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" placeholder="Type your message here...">
+            <button class="chat-button">Send</button>
+        </div>
+    </div>
+    <script src="/static/js/scripts.js"></script>
+</body>
+</html>
