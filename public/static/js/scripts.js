@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const chatInput = document.querySelector('.chat-input');
+    
+    // Set focus to chat input on page load
+    chatInput.focus();
+
     const chatButton = document.querySelector('.chat-button');
     const promptButtons = document.querySelectorAll('.prompt-button');
 
@@ -120,7 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => span.remove(), 2500);
     }
 
-    let currentEngine = 'novelai';
+    // Change default engine to openai
+    let currentEngine = 'openai';
     const engineButtons = document.querySelectorAll('.engine-button');
 
     engineButtons.forEach(button => {

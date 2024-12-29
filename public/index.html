@@ -20,20 +20,26 @@
             <img src="/static/images/avatar.png" alt="Luke Maccabee" class="profile-photo">
         </div>
     </div>
+    
+    <div class="quick-link-menu">
+        <a href="/house-sitting" class="quick-link">House Sitting</a>
+        <a href="/ai-solutions" class="quick-link">AI Solutions</a>
+        <a href="/travel-media" class="quick-link">Travel & Media</a>
+    </div>
+
     <div class="chat-container">
         <div class="engine-switcher">
-            <button class="engine-button active" data-engine="novelai">NovelAI</button>
-            <button class="engine-button" data-engine="openai">GPT-4</button>
+            <button class="engine-button" data-engine="novelai">NovelAI</button>
+            <button class="engine-button active" data-engine="openai">GPT-4</button>
         </div>
         <div class="chat-messages" id="chat-messages">
             <!-- Chat messages will appear here -->
         </div>
         <!-- Add prompt hints here -->
         <div class="prompt-hints">
-            <button class="prompt-button">I want to hire Luke</button>
-            <button class="prompt-button">I need a pet sitter</button>
-            <button class="prompt-button">Tell me about your travels</button>
-            <!-- Add more prompt buttons as needed -->
+            <button class="prompt-button">Need a pet sitter?</button>
+            <button class="prompt-button">AI consulting</button>
+            <!-- Removed third button for better mobile display -->
         </div>
         <div class="chat-input-area">
             <input type="text" class="chat-input" placeholder="Type your message here...">

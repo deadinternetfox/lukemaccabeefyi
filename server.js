@@ -36,6 +36,20 @@ app.use(express.json());
 app.use('/static', express.static(path.join(__dirname, 'public/static')));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Add new house sitting endpoint
+app.get('/house-sitting', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'house-sitting.html'));
+});
+
+// Add new endpoints for AI Solutions and Travel & Media
+app.get('/ai-solutions', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'ai-solutions.html'));
+});
+
+app.get('/travel-media', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'travel-media.html'));
+});
+
 // Handle root route
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
