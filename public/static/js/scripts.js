@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const chatInput = document.querySelector('.chat-input');
     
     // Set focus to chat input on page load
@@ -238,6 +238,28 @@ document.addEventListener('DOMContentLoaded', () => {
             // Create text container for animated content
             const textContainer = document.createElement('div');
             textContainer.className = 'animated-text';
+
+            // Extract media URLs from sources if they exist
+            const mediaUrls = [];
+            if (sources && sources.length > 0) {
+                sources.forEach(source => {
+                    if (source.filename.startsWith('pet-media/')) {
+                        const mediaFiles = getMediaFilesForSource(source);
+                        mediaUrls.push(...mediaFiles);
+                    }
+                });
+            }
+
+            // If media exists, create carousel before the text
+            if (mediaUrls.length > 0) {
+                const mediaContent = document.createElement('div');
+                mediaContent.className = 'media-content';
+                const carousel = createMediaCarousel(mediaUrls);
+                mediaContent.appendChild(carousel);
+                messageContent.appendChild(mediaContent);
+            }
+
+            // Add text content after media
             messageContent.appendChild(textContainer);
 
             let words = formattedText.match(/\S+|\s+|[.,!?]+/g) || [];
@@ -352,8 +374,101 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         messageWrapper.appendChild(messageContent);
+
+        // Add sources after the message content
+        if (sender === 'bot' && sources && sources.length > 0) {
+            const sourcesInline = createSourcesSection(sources);
+            messageWrapper.appendChild(sourcesInline);
+        }
+
         chatMessages.appendChild(messageWrapper);
         chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function createMediaCarousel(mediaUrls) {
+        const carousel = document.createElement('div');
+        carousel.className = 'media-carousel';
+        
+        const imageContainer = document.createElement('div');
+        imageContainer.className = 'image-container';
+        
+        const currentImage = document.createElement('img');
+        currentImage.src = mediaUrls[0];
+        currentImage.className = 'response-media';
+        currentImage.onclick = () => openLightbox(mediaUrls[0]);
+        
+        imageContainer.appendChild(currentImage);
+        carousel.appendChild(imageContainer);
+        
+        if (mediaUrls.length > 1) {
+            const prevButton = document.createElement('button');
+            prevButton.className = 'media-nav prev';
+            prevButton.innerHTML = '❮';
+            
+            const nextButton = document.createElement('button');
+            nextButton.className = 'media-nav next';
+            nextButton.innerHTML = '❯';
+            
+            const counter = document.createElement('div');
+            counter.className = 'media-counter';
+            counter.textContent = `1/${mediaUrls.length}`;
+            
+            let currentIndex = 0;
+            
+            const updateImage = () => {
+                currentImage.src = mediaUrls[currentIndex];
+                currentImage.onclick = () => openLightbox(mediaUrls[currentIndex]);
+                counter.textContent = `${currentIndex + 1}/${mediaUrls.length}`;
+                
+                // Fade effect
+                currentImage.style.opacity = '0';
+                setTimeout(() => {
+                    currentImage.style.opacity = '1';
+                }, 50);
+            };
+            
+            prevButton.onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex - 1 + mediaUrls.length) % mediaUrls.length;
+                updateImage();
+            };
+            
+            nextButton.onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex + 1) % mediaUrls.length;
+                updateImage();
+            };
+            
+            carousel.appendChild(prevButton);
+            carousel.appendChild(nextButton);
+            carousel.appendChild(counter);
+        }
+        
+        return carousel;
+    }
+
+    function openLightbox(imageSrc) {
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        
+        const img = document.createElement('img');
+        img.src = imageSrc;
+        
+        const closeButton = document.createElement('div');
+        closeButton.className = 'lightbox-close';
+        closeButton.innerHTML = '×';
+        
+        lightbox.onclick = () => document.body.removeChild(lightbox);
+        closeButton.onclick = (e) => {
+            e.stopPropagation();
+            document.body.removeChild(lightbox);
+        };
+        
+        lightbox.appendChild(img);
+        lightbox.appendChild(closeButton);
+        document.body.appendChild(lightbox);
+        
+        setTimeout(() => lightbox.classList.add('active'), 10);
     }
 
     async function regenerateResponse(originalPrompt, newEngine) {
@@ -387,4 +502,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add swirl lines on start
     createSwirlLines();
+    
+    let petMediaIndex = [];
+
+    // Load the media index when page loads
+    try {
+        console.log('Fetching media index...');
+        const response = await fetch('/static/images/pet-media/mediaIndex.json');
+        petMediaIndex = await response.json();
+        console.log('Successfully loaded media index:', petMediaIndex);
+    } catch (error) {
+        console.error('Failed to load media index:', error);
+    }
+
+    function getMediaFilesForSource(source) {
+        // Extract just the base name (no extension, no path)
+        const sourceBaseName = source.filename.split('/').pop().replace('.txt', '');
+        console.log('Looking for media for base name:', sourceBaseName);
+        
+        // Find media with matching base name
+        const matches = petMediaIndex.filter(media => 
+            media.baseName.toLowerCase() === sourceBaseName.toLowerCase()
+        );
+        
+        console.log('Found matching media:', matches);
+        
+        // Return only the full paths
+        return matches.map(media => media.fullPath);
+    }
 });

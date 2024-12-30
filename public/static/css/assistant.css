@@ -503,3 +503,22 @@ video.response-media {
 .message.user .message-sources {
     text-align: right;
 }
+
+/* Refine carousel layout for multiple images */
+.media-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+/* Make sources stand out more */
+.message-sources {
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(0, 255, 0, 0.08);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 8px;
+    font-size: 0.9rem;
+}

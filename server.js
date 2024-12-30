@@ -51,6 +51,32 @@ app.get('/travel-media', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'travel-media.html'));
 });
 
+// Add new route to get media index before the API routes
+app.get('/static/images/pet-media/mediaIndex.json', (req, res) => {
+    const mediaDir = path.join(__dirname, 'public/static/images/pet-media');
+    try {
+        // Get all files and map them with full info
+        const mediaFiles = fs.readdirSync(mediaDir)
+            .filter(file => !file.endsWith('.txt'))
+            .map(file => {
+                const baseName = file.substring(0, file.lastIndexOf('.'));
+                const extension = file.substring(file.lastIndexOf('.'));
+                return { 
+                    baseName,
+                    extension,
+                    fullPath: `/static/images/pet-media/${file}`,
+                    filename: file
+                };
+            });
+        
+        console.log('Media files found:', mediaFiles);
+        res.json(mediaFiles);
+    } catch (error) {
+        console.error('Error reading media directory:', error);
+        res.status(500).json([]);
+    }
+});
+
 // Handle root route
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
