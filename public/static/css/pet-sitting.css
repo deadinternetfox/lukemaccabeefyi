@@ -607,3 +607,169 @@ body.pet-sitting .chat-messages {
 body.pet-sitting .chat-window * {
     border-color: var(--pet-primary);
 }
+
+/* Response media handling */
+.response-media {
+    max-width: 250px;
+    height: auto;
+    border-radius: 12px;
+    margin: 8px 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 12px var(--pet-shadow);
+}
+
+.response-media:hover {
+    transform: scale(1.02);
+}
+
+/* Lightbox styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.lightbox.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: lightboxFadeIn 0.3s ease;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 8px;
+    object-fit: contain;
+    animation: lightboxImageZoom 0.3s ease;
+}
+
+@keyframes lightboxFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes lightboxImageZoom {
+    from { transform: scale(0.95); }
+    to { transform: scale(1); }
+}
+
+/* Close button for lightbox */
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 768px) {
+    .response-media {
+        max-width: 200px;
+    }
+    
+    .lightbox img {
+        max-width: 95%;
+    }
+    
+    .lightbox-close {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+/* Media carousel styles */
+.media-content {
+    position: relative;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.media-carousel {
+    position: relative;
+    display: inline-block;
+}
+
+.media-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 139, 126, 0.8);
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.media-nav:hover {
+    background: var(--pet-primary);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.media-nav.prev {
+    left: -16px;
+}
+
+.media-nav.next {
+    right: -16px;
+}
+
+.media-nav::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border: 2px solid white;
+    border-left: 0;
+    border-bottom: 0;
+}
+
+.media-nav.prev::before {
+    transform: rotate(-135deg);
+    margin-left: 4px;
+}
+
+.media-nav.next::before {
+    transform: rotate(45deg);
+    margin-right: 4px;
+}
+
+.media-counter {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    z-index: 2;
+}

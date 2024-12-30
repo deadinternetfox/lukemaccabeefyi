@@ -96,9 +96,16 @@ async function processDocuments(index, docsDir, openai) {
             const filePath = path.join(docsDir, file);
             const stats = fs.statSync(filePath);
             const lastModified = stats.mtime.toISOString();
-            const content = fs.readFileSync(filePath, 'utf-8');
             
-            console.log(`Processing ${file} with content:`, content);
+            // Check if file already exists in Pinecone and compare timestamps
+            const existingMetadata = await getDocumentMetadata(index, file);
+            if (existingMetadata && existingMetadata.timestamp === lastModified) {
+                console.log(`Skipping ${file} - no changes detected`);
+                continue;
+            }
+
+            const content = fs.readFileSync(filePath, 'utf-8');
+            console.log(`Processing ${file} - changes detected or new file`);
 
             const embeddingResponse = await openai.embeddings.create({
                 model: 'text-embedding-3-large',
@@ -138,29 +145,77 @@ async function processDocuments(index, docsDir, openai) {
     }
 }
 
-// Add function to process image descriptions
-async function processImageDescriptions() {
+// Update function signature to accept required parameters
+async function processImageDescriptions(index, openai) {
     const imageDir = path.join(__dirname, 'public', 'static', 'images', 'pet-media');
-    const files = await fs.promises.readdir(imageDir);
-    
-    for (const file of files) {
-        if (file.endsWith('.txt')) {
+    console.log('Checking pet-media directory:', imageDir);
+
+    try {
+        const files = await fs.promises.readdir(imageDir);
+        console.log('Found files in pet-media:', files);
+        
+        for (const file of files) {
+            if (!file.endsWith('.txt')) continue;
+            
+            const filePath = path.join(imageDir, file);
+            const stats = fs.statSync(filePath);
+            const lastModified = stats.mtime.toISOString();
+            
+            // Check if description already exists in Pinecone and compare timestamps
+            const existingMetadata = await getDocumentMetadata(index, `pet-media/${file}`);
+            if (existingMetadata && existingMetadata.timestamp === lastModified) {
+                console.log(`Skipping ${file} - no changes detected`);
+                continue;
+            }
+
+            console.log(`Processing pet-media text file: ${file}`);
+            const content = await fs.promises.readFile(filePath, 'utf-8');
+
+            // Generate embedding for the content
+            const embeddingResponse = await openai.embeddings.create({
+                model: 'text-embedding-3-large',
+                input: content,
+            });
+            const embedding = embeddingResponse.data[0].embedding;
+
             const baseName = file.replace('.txt', '');
-            const content = await fs.promises.readFile(path.join(imageDir, file), 'utf-8');
-            const imageFiles = files.filter(f => 
+            const mediaFiles = files.filter(f => 
                 f.startsWith(baseName) && 
                 (f.endsWith('.jpg') || f.endsWith('.png') || f.endsWith('.mp4'))
             );
 
-            if (imageFiles.length > 0) {
-                documents.push({
-                    content: content,
-                    filename: `pet-media/${baseName}`,
-                    mediaFiles: imageFiles.map(f => `/static/images/pet-media/${f}`),
+            console.log(`Found media files for ${baseName}:`, mediaFiles);
+
+            // Update vector in Pinecone
+            const vectorData = {
+                id: `pet-media/${file}`,
+                values: embedding,
+                metadata: {
+                    filename: `pet-media/${file}`,
+                    timestamp: lastModified,
+                    text: content,
+                    mediaFiles: mediaFiles.map(f => `/static/images/pet-media/${f}`),
                     type: 'image-description'
-                });
-            }
+                }
+            };
+
+            await axios({
+                method: 'post',
+                url: `${process.env.PINECONE_HOST}/vectors/upsert`,
+                headers: {
+                    'Api-Key': process.env.PINECONE_API_KEY,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                data: {
+                    vectors: [vectorData]
+                }
+            });
+
+            console.log(`Successfully processed ${file} with metadata:`, vectorData.metadata);
         }
+    } catch (error) {
+        console.error('Error processing image descriptions:', error);
     }
 }
 
@@ -173,13 +228,17 @@ async function vectorizeDocs() {
         console.log('Verifying index...');
         const index = await verifyIndex(pinecone, process.env.PINECONE_INDEX);
 
+        // Process regular documents
         const docsDir = path.join(__dirname, 'lukedocs');
         if (!fs.existsSync(docsDir)) {
             fs.mkdirSync(docsDir, { recursive: true });
         }
-
         await processDocuments(index, docsDir, openai);
-        await processImageDescriptions();
+
+        // Process image descriptions (with better error handling)
+        console.log('Processing image descriptions...');
+        await processImageDescriptions(index, openai);
+        
         console.log('Vectorization completed successfully');
     } catch (err) {
         console.error('Fatal error:', {

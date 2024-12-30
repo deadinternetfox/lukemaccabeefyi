@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sender === 'bot') {
             const messageHeader = document.createElement('div');
             messageHeader.className = 'message-header';
-            messageHeader.innerHTML = `<span>via ${engine === 'novelai' ? 'NovelAI' : 'GPT-4'}</span>`;
+            messageHeader.innerHTML = `<span>via ${engine === 'novelai' ? 'NovelAI' : 'GPT-4-mini'}</span>`;
             messageWrapper.appendChild(messageHeader);
         }
 
@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
             actionsDiv.innerHTML = `
                 <select class="model-select">
                     <option value="novelai" ${engine === 'novelai' ? 'selected' : ''}>NovelAI</option>
-                    <option value="openai" ${engine === 'openai' ? 'selected' : ''}>GPT-4</option>
+                    <option value="openai" ${engine === 'openai' ? 'selected' : ''}>GPT-4-mini</option>
                 </select>
                 <button class="regenerate-button" title="Regenerate with selected model">
                     <svg width="16" height="16" viewBox="0 0 24 24">

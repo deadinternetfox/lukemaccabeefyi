@@ -29,9 +29,22 @@ function toggleChat() {
     }
 }
 
+function createLightbox() {
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    const closeButton = document.createElement('div');
+    closeButton.className = 'lightbox-close';
+    closeButton.innerHTML = '×';
+    lightbox.appendChild(closeButton);
+    document.body.appendChild(lightbox);
+    
+    return lightbox;
+}
+
 function displayMediaContent(mediaFiles) {
     const mediaContainer = document.createElement('div');
     mediaContainer.className = 'media-content';
+    const lightbox = document.querySelector('.lightbox') || createLightbox();
 
     mediaFiles.forEach(file => {
         if (file.endsWith('.mp4')) {
@@ -40,10 +53,31 @@ function displayMediaContent(mediaFiles) {
             video.controls = true;
             video.className = 'response-media';
             mediaContainer.appendChild(video);
-        } else {
+        } else if (file.endsWith('.jpg') || file.endsWith('.png')) {
             const img = document.createElement('img');
             img.src = file;
             img.className = 'response-media';
+            img.loading = 'lazy';
+            img.onclick = () => {
+                const fullImg = document.createElement('img');
+                fullImg.src = file;
+                lightbox.innerHTML = ''; // Clear previous content
+                const closeBtn = document.createElement('div');
+                closeBtn.className = 'lightbox-close';
+                closeBtn.innerHTML = '×';
+                lightbox.appendChild(closeBtn);
+                lightbox.appendChild(fullImg);
+                lightbox.classList.add('active');
+                
+                // Close lightbox when clicking outside image or on close button
+                const closeLightbox = (e) => {
+                    if (e.target === lightbox || e.target === closeBtn) {
+                        lightbox.classList.remove('active');
+                    }
+                };
+                lightbox.onclick = closeLightbox;
+                closeBtn.onclick = closeLightbox;
+            };
             mediaContainer.appendChild(img);
         }
     });
@@ -186,31 +220,75 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (response.ok) {
                     const data = await response.json();
                     if (data.status === 'complete') {
-                        // Add bot response to history
-                        conversationHistory.push({ role: 'assistant', content: data.text });
-                        
-                        // Create message container
+                        // Create message container first
                         const messageDiv = document.createElement('div');
                         messageDiv.className = 'message bot';
                         
-                        // Add main message content
+                        // Create and append message content
                         const textDiv = document.createElement('div');
                         textDiv.className = 'message-content';
                         
-                        // Add label
                         const labelDiv = document.createElement('div');
                         labelDiv.className = 'message-label';
                         labelDiv.textContent = 'Luke:';
                         textDiv.appendChild(labelDiv);
                         
-                        // Add message text with typing animation
                         const messageText = document.createElement('div');
                         messageText.className = 'message-text';
                         textDiv.appendChild(messageText);
                         messageDiv.appendChild(textDiv);
+                        
+                        // Append message to chat before starting animation
                         messagesContainer.appendChild(messageDiv);
 
-                        // Animate text typing
+                        // Process media files first
+                        const mediaPromises = [];
+                        const mediaFiles = [];
+                        
+                        if (data.sources) {
+                            data.sources.forEach(source => {
+                                if (typeof source === 'string' && source.includes('pet-media/')) {
+                                    const match = source.match(/pet-media\/([^)\s]+)/);
+                                    if (match) {
+                                        const baseFile = match[1].replace(/\.(jpg|png|mp4|txt)$/, '');
+                                        const extensions = ['.jpg', '.png'];
+                                        
+                                        extensions.forEach(ext => {
+                                            const mediaPath = `/static/images/pet-media/${baseFile}${ext}`;
+                                            const promise = new Promise((resolve) => {
+                                                const img = new Image();
+                                                img.onload = () => {
+                                                    mediaFiles.push(mediaPath);
+                                                    resolve();
+                                                };
+                                                img.onerror = () => resolve();
+                                                img.src = mediaPath;
+                                            });
+                                            mediaPromises.push(promise);
+                                        });
+                                    }
+                                }
+                            });
+                        }
+
+                        // Wait for all media files to be checked
+                        await Promise.all(mediaPromises);
+
+                        // Add media content if any files were found
+                        if (mediaFiles.length > 0) {
+                            const mediaCarousel = document.createElement('div');
+                            mediaCarousel.className = 'media-carousel';
+                            
+                            mediaFiles.forEach(file => {
+                                const mediaContainer = displayMediaContent([file]);
+                                mediaContainer.style.display = 'block';
+                                mediaCarousel.appendChild(mediaContainer);
+                            });
+
+                            messageDiv.appendChild(mediaCarousel);
+                        }
+
+                        // Animate text
                         let currentText = '';
                         const words = data.text.split(' ');
                         let wordIndex = 0;
@@ -229,7 +307,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                     sourcesDiv.className = 'message-sources';
                                     sourcesDiv.textContent = data.sources.join(', ');
                                     messageDiv.appendChild(sourcesDiv);
-                                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
                                 }
                             }
                         }
