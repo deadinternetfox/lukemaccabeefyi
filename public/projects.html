@@ -433,6 +433,32 @@
                     </p>
                 </div>
 
+                <!-- Disclosure Countdown -->
+                <div class="disclosure-countdown">
+                    <h3>⏱️ Days Without Employment Until Disclosures</h3>
+                    <div class="countdown-bar-container">
+                        <div class="countdown-bar" style="width: 43%;">
+                            <span class="countdown-progress">430</span>
+                        </div>
+                        <span class="countdown-target">1000</span>
+                    </div>
+                    <div class="countdown-labels">
+                        <span>0</span>
+                        <span>1000 days</span>
+                    </div>
+                    
+                    <!-- First Disclosure Preview -->
+                    <div class="disclosure-preview">
+                        <div class="disclosure-header">
+                            <span class="disclosure-number">1.</span>
+                            <h4>Max & John - Mossad, Coke and Underage Teens</h4>
+                        </div>
+                        <div class="disclosure-content">
+                            <img src="/static/images/ops-media/maxkey.jpg" alt="Max Key Disclosure" class="disclosure-img">
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -781,7 +807,7 @@
         const lightboxClose = document.querySelector('.lightbox-close');
 
         // Make all project images clickable
-        document.querySelectorAll('.intel-thumbnail, .softskill-image img, .card-image img, .project-image img, .evidence-img, .gallery-img').forEach(img => {
+        document.querySelectorAll('.intel-thumbnail, .softskill-image img, .card-image img, .project-image img, .evidence-img, .gallery-img, .disclosure-img').forEach(img => {
             img.classList.add('lightbox-trigger');
             img.addEventListener('click', function() {
                 lightbox.classList.add('active');

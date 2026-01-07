@@ -1759,3 +1759,126 @@ html, body {
         padding: 10px 15px;
     }
 }
+
+/* Disclosure Countdown Styles */
+.disclosure-countdown {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 50, 50, 0.1);
+    border: 1px solid rgba(255, 50, 50, 0.3);
+    border-radius: 10px;
+}
+
+.disclosure-countdown h3 {
+    color: #ff4444;
+    margin: 0 0 1rem 0;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.countdown-bar-container {
+    position: relative;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    height: 35px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 50, 50, 0.3);
+}
+
+.countdown-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #ff4444, #ff6666);
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 15px rgba(255, 50, 50, 0.5);
+}
+
+.countdown-progress {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1em;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.countdown-target {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9em;
+}
+
+.countdown-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.3rem;
+    color: rgba(255, 100, 100, 0.7);
+    font-size: 0.8em;
+}
+
+/* Disclosure Preview */
+.disclosure-preview {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 50, 50, 0.2);
+}
+
+.disclosure-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.disclosure-number {
+    color: #ff4444;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.disclosure-header h4 {
+    color: #ff6666;
+    margin: 0;
+    font-size: 1em;
+}
+
+.disclosure-content {
+    display: flex;
+    justify-content: center;
+}
+
+.disclosure-img {
+    max-width: 300px;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 50, 50, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.disclosure-img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(255, 50, 50, 0.4);
+}
+
+@media (max-width: 768px) {
+    .disclosure-countdown {
+        padding: 1rem;
+    }
+    
+    .disclosure-countdown h3 {
+        font-size: 0.95em;
+    }
+    
+    .disclosure-img {
+        max-width: 100%;
+        max-height: 150px;
+    }
+}
