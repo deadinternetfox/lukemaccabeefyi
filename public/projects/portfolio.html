@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Portfolio - Development Story | Luke Maccabee</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="AI Portfolio Site - Development Story">
+    <meta name="description" content="Interactive portfolio with LLM-powered chat assistant. Built with Node.js, Express, and AI integration for conversational engagement.">
+    <meta name="author" content="Luke Maccabee">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lukemaccabee.fyi/projects/portfolio">
+    <meta property="og:title" content="🤖 AI Portfolio Site - Development Story">
+    <meta property="og:description" content="Interactive portfolio with LLM-powered chat assistant for conversational engagement.">
+    <meta property="og:image" content="https://lukemaccabee.fyi/static/images/avatar.png">
+    <meta property="og:site_name" content="Luke Maccabee">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="https://lukemaccabee.fyi/projects/portfolio">
+    <meta property="twitter:title" content="🤖 AI Portfolio Site - Development Story">
+    <meta property="twitter:description" content="Interactive portfolio with LLM-powered chat assistant.">
+    <meta property="twitter:image" content="https://lukemaccabee.fyi/static/images/avatar.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/static/images/avatar.png">
+    
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/projects.css">
+    <link rel="stylesheet" href="/static/css/project-story.css">
+</head>
+<body>
+    <header class="projects-header">
+        <nav class="projects-nav" style="margin-top: 0; margin-bottom: 1rem;">
+            <a href="/">Home</a>
+            <a href="/projects">Projects</a>
+        </nav>
+        <h1>🤖 AI Portfolio Chat</h1>
+        <p class="header-subtitle">Interactive Portfolio with AI-Powered Conversations</p>
+    </header>
+
+    <main class="story-container">
+        <!-- Hero Section -->
+        <section class="story-hero">
+            <div class="hero-content">
+                <div class="project-meta">
+                    <span class="meta-item">📅 Started: December 2024</span>
+                    <span class="meta-item">🔧 Status: Live</span>
+                    <span class="meta-item">⭐ Version: 1.0</span>
+                </div>
+                <div class="hero-links">
+                    <a href="/" class="project-btn primary">
+                        🏠 View Live Site
+                    </a>
+                    <a href="https://github.com/lukemaccabee/lukemaccabeefyi" target="_blank" class="project-btn secondary">
+                        💻 View Source
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overview -->
+        <section class="story-section">
+            <h2>📖 The Concept</h2>
+            <div class="story-content">
+                <p>
+                    Instead of a traditional static portfolio, I wanted to create something that showcases 
+                    my AI development skills while also being genuinely useful. The result is an interactive 
+                    chat interface where visitors can ask questions about my work, skills, and services.
+                </p>
+                <p>
+                    The AI has been trained on documents about my experience and can provide accurate, 
+                    contextual responses about pet sitting services, AI consulting, and my various projects.
+                </p>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="story-section">
+            <h2>🛠️ Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon">🟢</div>
+                    <h3>Node.js + Express</h3>
+                    <p>Fast, lightweight server handling API requests and static file serving</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🧠</div>
+                    <h3>OpenAI GPT-4</h3>
+                    <p>Primary AI engine for intelligent, contextual conversations</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">📝</div>
+                    <h3>NovelAI</h3>
+                    <p>Alternative AI engine option for creative responses</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🌲</div>
+                    <h3>Pinecone</h3>
+                    <p>Vector database for semantic search and document retrieval (RAG)</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">☁️</div>
+                    <h3>Cloudflare Tunnel</h3>
+                    <p>Secure edge delivery and SSL without exposing ports</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🔄</div>
+                    <h3>PM2</h3>
+                    <p>Process manager for zero-downtime deployments and auto-restart</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features -->
+        <section class="story-section">
+            <h2>✨ Key Features</h2>
+            <div class="features-list">
+                <div class="feature-item">
+                    <h3>🔀 Dual AI Engines</h3>
+                    <p>
+                        Users can switch between GPT-4 and NovelAI to compare responses 
+                        and find the style that suits them best.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <h3>📚 RAG-Powered Responses</h3>
+                    <p>
+                        Retrieval-Augmented Generation ensures the AI provides accurate information 
+                        about my services by searching through vectorized documents.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <h3>💬 Conversation Memory</h3>
+                    <p>
+                        Session-based memory allows for natural, flowing conversations 
+                        that remember context from earlier in the chat.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <h3>🎨 Matrix-Inspired Design</h3>
+                    <p>
+                        Custom CSS with animated grid background, glowing effects, 
+                        and a distinctive green-on-black aesthetic.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture -->
+        <section class="story-section">
+            <h2>🏗️ How It Works</h2>
+            <div class="story-content">
+                <p><strong>1. Document Vectorization:</strong> On server startup, markdown documents describing my services and experience are converted into vector embeddings using OpenAI's embedding API.</p>
+                <p><strong>2. Vector Storage:</strong> These embeddings are stored in Pinecone, enabling fast semantic search.</p>
+                <p><strong>3. Query Processing:</strong> When a user asks a question, it's converted to a vector and matched against stored documents.</p>
+                <p><strong>4. Context Injection:</strong> Relevant document snippets are injected into the AI prompt as context.</p>
+                <p><strong>5. Response Generation:</strong> The AI generates a response using both the context and conversation history.</p>
+            </div>
+        </section>
+
+        <!-- Challenges -->
+        <section class="story-section">
+            <h2>🧗 Challenges & Solutions</h2>
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <h3>Challenge: Response Accuracy</h3>
+                    <p class="problem">Generic AI responses didn't reflect my actual services and experience accurately.</p>
+                    <p class="solution"><strong>Solution:</strong> Implemented RAG with Pinecone to ground responses in my actual documentation, dramatically improving accuracy.</p>
+                </div>
+                <div class="challenge-card">
+                    <h3>Challenge: Cost Management</h3>
+                    <p class="problem">GPT-4 API calls can be expensive with high traffic.</p>
+                    <p class="solution"><strong>Solution:</strong> Added NovelAI as an alternative engine and implemented session limits to manage costs.</p>
+                </div>
+                <div class="challenge-card">
+                    <h3>Challenge: Deployment</h3>
+                    <p class="problem">Needed secure, reliable hosting that works alongside existing projects.</p>
+                    <p class="solution"><strong>Solution:</strong> Used Cloudflare Tunnels for secure access and PM2 for process management on the same server as FrogMaps.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="story-cta">
+            <h2>Try It Out</h2>
+            <p>Chat with the AI to learn about my services</p>
+            <div class="cta-buttons">
+                <a href="/" class="project-btn primary large">
+                    💬 Start Chatting
+                </a>
+                <a href="/projects" class="project-btn secondary large">
+                    ← Back to Projects
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="projects-footer">
+        <p>Built with 💚 by Luke Maccabee</p>
+        <div class="footer-links">
+            <a href="https://github.com/lukemaccabee" target="_blank">GitHub</a>
+            <a href="/">Home</a>
+            <a href="/projects">Projects</a>
+        </div>
+    </footer>
+</body>
+</html>

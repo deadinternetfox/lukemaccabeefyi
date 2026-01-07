@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet & House Sitting Services - Luke Maccabee</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Pet & House Sitting Services - Luke Maccabee">
+    <meta name="description" content="Professional pet and house sitting services. Experienced with dogs, cats, and all animals. Available for short and long-term stays.">
+    <meta name="author" content="Luke Maccabee">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lukemaccabee.fyi/house-sitting">
+    <meta property="og:title" content="Pet & House Sitting Services - Luke Maccabee">
+    <meta property="og:description" content="Professional pet and house sitting services. Experienced with dogs, cats, and all animals. Available for short and long-term stays.">
+    <meta property="og:image" content="https://lukemaccabee.fyi/static/images/petcarelogo.png">
+    <meta property="og:site_name" content="Luke Maccabee">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="https://lukemaccabee.fyi/house-sitting">
+    <meta property="twitter:title" content="Pet & House Sitting Services - Luke Maccabee">
+    <meta property="twitter:description" content="Professional pet and house sitting services. Experienced with dogs, cats, and all animals.">
+    <meta property="twitter:image" content="https://lukemaccabee.fyi/static/images/petcarelogo.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/static/images/avatar.png">
+    
+    <!-- Change the order of CSS files -->
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="static/css/assistant.css">
+    <link rel="stylesheet" href="static/css/services.css">
+    <link rel="stylesheet" href="static/css/pet-sitting.css">  <!-- Make sure this is last -->
+</head>
+<body class="pet-sitting">  <!-- Add this class -->
+    <div class="services-header">
+        <img src="/static/images/petcarelogo.png" alt="Pet Care Logo" class="pet-logo">
+        <h1>Pet & House Sitting</h1>
+        <nav class="services-nav">
+            <a href="/">Home</a>
+            <a href="/projects">Projects</a>
+            <a href="/house-sitting" class="active">Services</a>
+            <a href="#contact">Book Now</a>
+        </nav>
+    </div>
+
+    <!-- Updated assistant chat markup -->
+    <div class="assistant-chat">
+        <div class="chat-toggle">
+            <img src="/static/images/avatar.png" alt="Assistant" class="assistant-avatar">
+            <div class="assistant-label">Click for Virtual Luke!</div>
+        </div>
+        <div class="chat-window hidden">
+            <div class="chat-header">
+                <span>Chat with Luke's Assistant</span>
+                <button class="close-button">×</button>
+            </div>
+            <div class="chat-messages">
+                <div class="message bot">
+                    <div class="message-content">
+                        <div class="message-label">Luke:</div>
+                        <div class="message-text">Hi! I'm Luke's assistant. I can help you learn more about our pet and house sitting services. What would you like to know?</div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <div class="prompt-hints">
+                    <button class="prompt-button">Pricing info</button>
+                    <button class="prompt-button">Services offered</button>
+                    <button class="prompt-button">Booking process</button>
+                </div>
+                <div class="input-with-button">
+                    <input type="text" class="chat-input" placeholder="Ask about our services...">
+                    <button class="chat-send">
+                        <span class="button-text">Send</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="chat-overlay"></div>
+    </div>
+
+    <div class="services-grid">
+        <!-- Pet Sitting Card -->
+        <div class="service-card">
+            <div class="service-image gradient-placeholder pet-gradient"><span>🐾</span></div>
+            <div class="service-content">
+                <h3>Pet Sitting Services</h3>
+                <p>Professional and caring pet sitting services for all your furry friends.</p>
+                <ul class="service-features">
+                    <li>Daily dog walks (30-60 minutes)</li>
+                    <li>Cat sitting and feeding visits</li>
+                    <li>Small animal care</li>
+                    <li>Medication administration</li>
+                    <li>GPS tracked walks</li>
+                    <li>Photo updates via WhatsApp</li>
+                </ul>
+                <div class="price-range">
+                    $50-120 NZD per visit
+                </div>
+                <a href="#contact" class="cta-button">Book Pet Sitting</a>
+            </div>
+        </div>
+
+        <!-- House Sitting Card -->
+        <div class="service-card">
+            <div class="service-image gradient-placeholder house-gradient"><span>🏠</span></div>
+            <div class="service-content">
+                <h3>House Sitting Services</h3>
+                <p>Keep your home safe and maintained while you're away.</p>
+                <ul class="service-features">
+                    <li>Mail collection</li>
+                    <li>Plant watering</li>
+                    <li>Security checks</li>
+                    <li>Basic house maintenance</li>
+                    <li>Key holding service</li>
+                    <li>Daily property checks</li>
+                </ul>
+                <div class="price-range">
+                    Custom quotes available
+                </div>
+                <a href="#contact" class="cta-button">Book House Sitting</a>
+            </div>
+        </div>
+
+        <!-- Combined Services Card -->
+        <div class="service-card">
+            <div class="service-image gradient-placeholder combined-gradient"><span>✨</span></div>
+            <div class="service-content">
+                <h3>Combined Care Package</h3>
+                <p>Comprehensive pet and house sitting services for complete peace of mind.</p>
+                <ul class="service-features">
+                    <li>Full pet care services</li>
+                    <li>House maintenance</li>
+                    <li>24/7 emergency contact</li>
+                    <li>Daily updates and photos</li>
+                    <li>Flexible scheduling</li>
+                    <li>Insurance covered</li>
+                </ul>
+                <div class="price-range">
+                    Contact for package rates
+                </div>
+                <a href="#contact" class="cta-button">Book Combined Services</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/assistant.js"></script>
+    <script src="/static/js/pet-background.js"></script>  <!-- Add this line -->
+</body>
+</html>

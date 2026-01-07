@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Luke Maccabee</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Projects - Luke Maccabee">
+    <meta name="description" content="Explore my projects: FrogMaps intelligence platform, FrogVPN censorship-resistant VPN, FrogTalk encrypted chat, security research tools, and hardware projects.">
+    <meta name="author" content="Luke Maccabee">
+    <meta name="keywords" content="FrogMaps, FrogVPN, FrogTalk, OSINT, security research, hardware hacking, NSA Cottonmouth, Xray VLESS">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lukemaccabee.fyi/projects">
+    <meta property="og:title" content="Projects - Luke Maccabee">
+    <meta property="og:description" content="Explore my projects: FrogMaps intelligence platform, FrogVPN censorship-resistant VPN, FrogTalk encrypted chat, security research tools, and hardware projects.">
+    <meta property="og:image" content="https://lukemaccabee.fyi/static/images/avatar.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:site_name" content="Luke Maccabee">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="https://lukemaccabee.fyi/projects">
+    <meta property="twitter:title" content="Projects - Luke Maccabee">
+    <meta property="twitter:description" content="Explore my projects: FrogMaps intelligence platform, FrogVPN censorship-resistant VPN, FrogTalk encrypted chat, security research tools, and hardware projects.">
+    <meta property="twitter:image" content="https://lukemaccabee.fyi/static/images/avatar.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/static/images/avatar.png">
+    
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/projects.css">
+</head>
+<body>
+    <header class="projects-header">
+        <h1>My Projects</h1>
+        <p class="header-subtitle">Intelligence tools, mapping platforms, and AI applications</p>
+        <nav class="projects-nav">
+            <a href="/">Home</a>
+            <a href="/projects" class="active">Projects</a>
+            <a href="/ai-solutions">AI Solutions</a>
+            <a href="https://github.com/deadinternetfox" target="_blank">GitHub</a>
+        </nav>
+    </header>
+
+    <main class="projects-container">
+        <!-- Featured Project: FrogMaps -->
+        <section class="featured-project">
+            <div class="featured-badge">Featured Project</div>
+            <div class="featured-content">
+                <div class="featured-info">
+                    <h2>🗺️ FrogMaps</h2>
+                    <p class="project-tagline">Collaborative Hiking & Hunting Map Platform</p>
+                    <p class="project-description">
+                        A real-time collaborative mapping platform for outdoor enthusiasts. Create groups, 
+                        share locations, plan trips, and crowdsource hunting spots, trails, and points of interest.
+                    </p>
+                    <ul class="project-features">
+                        <li>🗺️ Interactive maps with custom waypoints & markers</li>
+                        <li>👥 Real-time group collaboration & location sharing</li>
+                        <li>🏕️ Trip planning & tracking</li>
+                        <li>📍 User-generated points of interest</li>
+                        <li>📱 React Native mobile app + web interface</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">WebSockets</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://maps.frognet.pro/" target="_blank" class="project-btn primary">
+                            <span>🚀</span> Live Demo
+                        </a>
+                        <a href="/projects/frogmaps" class="project-btn secondary">
+                            <span>📖</span> Development Story
+                        </a>
+                    </div>
+                </div>
+                <div class="featured-preview">
+                    <div class="preview-frame">
+                        <div class="preview-header">
+                            <span class="preview-dot red"></span>
+                            <span class="preview-dot yellow"></span>
+                            <span class="preview-dot green"></span>
+                            <span class="preview-url">maps.frognet.pro</span>
+                        </div>
+                        <iframe src="https://maps.frognet.pro/" class="preview-iframe" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Software Projects Grid -->
+        <section class="projects-section">
+            <h2 class="section-title">💻 Software</h2>
+            <div class="projects-grid">
+                
+                <!-- Project Card: Ego -->
+                <div class="project-card featured-card">
+                    <div class="card-header">
+                        <span class="project-icon">🔍</span>
+                        <h3>Ego</h3>
+                        <span class="card-badge">OSINT</span>
+                    </div>
+                    <p class="card-description">
+                        Palantir-style intelligence platform with native Web3 token, wallet system, 
+                        and automated discovery of insecure .gov servers. AI-powered analysis with LLaMA, 
+                        multi-source data aggregation, and secure dashboard.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag small">Python</span>
+                        <span class="tech-tag small">Flask</span>
+                        <span class="tech-tag small">LLaMA</span>
+                        <span class="tech-tag small">Web3</span>
+                        <span class="tech-tag small">PyTorch</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="/projects/ego" class="card-btn">Dev Story</a>
+                    </div>
+                </div>
+
+                <!-- Project Card: FrogVPN -->
+                <div class="project-card" id="frogvpn">
+                    <div class="card-header">
+                        <span class="project-icon">🐸</span>
+                        <h3>FrogVPN</h3>
+                        <span class="card-badge">FrogNET</span>
+                    </div>
+                    <p class="card-description">
+                        Censorship-resistant VPN service using Xray/VLESS protocol with Reality disguise 
+                        to bypass deep packet inspection. Includes Telegram bot with Stars payments, 
+                        custom Android app, admin panel, and multi-language support (EN/RU/FA/ZH).
+                        Part of the <a href="#frogtalk" class="inline-link">FrogNET ecosystem</a>.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag small">Python</span>
+                        <span class="tech-tag small">Telegram Bot</span>
+                        <span class="tech-tag small">Xray/VLESS</span>
+                        <span class="tech-tag small">Reality Protocol</span>
+                        <span class="tech-tag small">Android</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://frognet.pro" target="_blank" class="card-btn">frognet.pro</a>
+                        <a href="/projects/frogvpn" class="card-btn outline">Dev Story</a>
+                    </div>
+                </div>
+
+                <!-- Project Card: FrogTalk -->
+                <div class="project-card" id="frogtalk">
+                    <div class="card-header">
+                        <span class="project-icon">💬</span>
+                        <h3>FrogTalk</h3>
+                        <span class="card-badge">FrogNET</span>
+                    </div>
+                    <p class="card-description">
+                        End-to-end encrypted chat platform with public/private rooms, direct messaging, 
+                        password-protected nicknames, and real-time WebSocket communication. Features 
+                        image/video sharing, @mentions, link previews, emoji support, and admin moderation.
+                        Requires <a href="#frogvpn" class="inline-link">FrogVPN</a> for access—ensuring 
+                        anonymous, censorship-resistant communication.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag small">JavaScript</span>
+                        <span class="tech-tag small">WebSocket</span>
+                        <span class="tech-tag small">E2E Encryption</span>
+                        <span class="tech-tag small">Real-time</span>
+                        <span class="tech-tag small">Python Backend</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="/projects/frogtalk" class="card-btn">Dev Story</a>
+                    </div>
+                </div>
+
+                <!-- Project Card: Paths -->
+                <div class="project-card">
+                    <div class="card-header">
+                        <span class="project-icon">🧭</span>
+                        <h3>Paths</h3>
+                    </div>
+                    <p class="card-description">
+                        React Native navigation app with Google Maps integration, geolocation services, 
+                        route directions, and Google Sign-In. Built for iOS and Android.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag small">React Native</span>
+                        <span class="tech-tag small">TypeScript</span>
+                        <span class="tech-tag small">Google Maps</span>
+                        <span class="tech-tag small">Geolocation</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="/projects/paths" class="card-btn">Dev Story</a>
+                    </div>
+                </div>
+
+                <!-- Project Card: This Portfolio Site -->
+                <div class="project-card">
+                    <div class="card-header">
+                        <span class="project-icon">🤖</span>
+                        <h3>AI Portfolio</h3>
+                    </div>
+                    <p class="card-description">
+                        This interactive portfolio with AI-powered chat using NovelAI and GPT-4. 
+                        Features RAG with Pinecone vector database for accurate responses.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag small">Node.js</span>
+                        <span class="tech-tag small">Express</span>
+                        <span class="tech-tag small">OpenAI</span>
+                        <span class="tech-tag small">Pinecone</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="/" class="card-btn">View Site</a>
+                        <a href="/projects/portfolio" class="card-btn outline">Dev Story</a>
+                    </div>
+                </div>
+
+                <!-- Project Card: BetterDiscord Theme -->
+                <div class="project-card">
+                    <div class="card-header">
+                        <span class="project-icon">🎨</span>
+                        <h3>FrogNET Theme</h3>
+                    </div>
+                    <p class="card-description">
+                        Custom BetterDiscord theme with CRT monitor effects, custom backgrounds, 
+                        and the signature green-on-black FrogNET aesthetic.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag small">CSS</span>
+                        <span class="tech-tag small">BetterDiscord</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="/projects/betterdiscord" class="card-btn">Dev Story</a>
+                        <a href="https://github.com/deadinternetfox/betterdiscordtheme" target="_blank" class="card-btn outline">GitHub</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Hardware Projects Grid -->
+        <section class="projects-section hardware-section">
+            <h2 class="section-title">🔧 Hardware</h2>
+            <div class="projects-grid">
+                
+                <!-- Project Card: Cottonmouth Clone -->
+                <div class="project-card featured-card">
+                    <div class="card-header">
+                        <span class="project-icon">📡</span>
+                        <h3>Cottonmouth Clone</h3>
+                        <span class="card-badge">NSA-Style</span>
+                    </div>
+                    <p class="card-description">
+                        DIY clone of the NSA's Cottonmouth implant. USB device with 4G LTE modem, 
+                        miniature microphone, and GPS module for covert data exfiltration and 
+                        location tracking. Built for security research and penetration testing.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag small">4G LTE</span>
+                        <span class="tech-tag small">GPS</span>
+                        <span class="tech-tag small">USB HID</span>
+                        <span class="tech-tag small">Embedded</span>
+                    </div>
+                    <div class="media-embed">
+                        <video controls preload="metadata">
+                            <source src="/static/images/ops-media/cottonmouthclone.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Project Card: Sabaka Collar -->
+                <div class="project-card featured-card">
+                    <div class="card-header">
+                        <span class="project-icon">🐕</span>
+                        <h3>Sabaka EW Collar</h3>
+                        <span class="card-badge">Electronic Warfare</span>
+                    </div>
+                    <p class="card-description">
+                        Canine electronic warfare system disguised as a dog collar. Scans and logs 
+                        all nearby WiFi networks, device names, and MAC addresses. Capable of 
+                        jamming Bluetooth and WiFi signals. Perfect passive reconnaissance platform 
+                        - who suspects a dog?
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag small">ESP32</span>
+                        <span class="tech-tag small">WiFi Scanning</span>
+                        <span class="tech-tag small">BT/WiFi Jamming</span>
+                        <span class="tech-tag small">Arduino</span>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="/static/images/ops-media/collar_interface.jpg" alt="Sabaka Collar Interface" class="gallery-img">
+                        <img src="/static/images/ops-media/collar_interface2.jpg" alt="Sabaka Collar Interface 2" class="gallery-img">
+                    </div>
+                    <div class="media-embed">
+                        <video controls preload="metadata">
+                            <source src="/static/images/ops-media/collar.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Project Card: Vape Breathalyzer -->
+                <div class="project-card">
+                    <div class="card-header">
+                        <span class="project-icon">🚬</span>
+                        <h3>$2 Breathalyzer</h3>
+                    </div>
+                    <p class="card-description">
+                        Converted a disposable vape into a functional breathalyzer by reprogramming 
+                        the MCU and adding an MQ-3 ethanol sensor. Total cost: $2.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag small">MCU</span>
+                        <span class="tech-tag small">MQ-3 Sensor</span>
+                        <span class="tech-tag small">Embedded C</span>
+                    </div>
+                    <div class="video-embed-small">
+                        <iframe 
+                            src="https://www.youtube.com/embed/0yb0z-WXwjo" 
+                            title="Vape to Breathalyzer Conversion"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Project Card: Baud Rate Brute -->
+                <div class="project-card">
+                    <div class="card-header">
+                        <span class="project-icon">🔌</span>
+                        <h3>Baud Rate Brute</h3>
+                    </div>
+                    <p class="card-description">
+                        Serial port baud rate detection utility with multiple modes: auto-scan, 
+                        brute-force, deep scan, and experimental pulse detection for hardware hacking.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag small">Python</span>
+                        <span class="tech-tag small">PySerial</span>
+                        <span class="tech-tag small">Hardware</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="/projects/baud-rate-brute" class="card-btn">Dev Story</a>
+                        <a href="https://github.com/deadinternetfox/Baud-Rate-Brute" target="_blank" class="card-btn outline">GitHub</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Security Research Section -->
+        <section class="projects-section security-section">
+            <h2 class="section-title">🔐 Security Research</h2>
+            <div class="softskills-content">
+
+                <!-- GCSB Vulnerability Discovery -->
+                <div class="softskill-card security-card gcsb-card">
+                    <div class="gcsb-vertical">
+                        <div class="gcsb-info-top">
+                            <h3>🔓 GCSB Security Vulnerability Discovery</h3>
+                            <p>
+                                Discovered critical email spoofing vulnerability in New Zealand's Government Communications 
+                                Security Bureau (GCSB) infrastructure. Their public-facing systems use Spark Business Mail 
+                                with <strong>no DMARC or DKIM</strong> authentication.
+                            </p>
+                            <div class="vuln-details">
+                                <div class="vuln-item">
+                                    <span class="vuln-label">SPF:</span>
+                                    <code>include:spf.sparkbusinessmail.co.nz</code>
+                                </div>
+                                <div class="vuln-item">
+                                    <span class="vuln-label">DMARC:</span>
+                                    <span class="vuln-missing">✗ None</span>
+                                </div>
+                                <div class="vuln-item">
+                                    <span class="vuln-label">DKIM:</span>
+                                    <span class="vuln-missing">✗ None</span>
+                                </div>
+                                <div class="vuln-item">
+                                    <span class="vuln-label">MS 365:</span>
+                                    <code class="small-code">MS=5D629D...E6E2B</code>
+                                </div>
+                            </div>
+                            <p class="vuln-impact">
+                                Exposed WordPress admin portals, password reset endpoints accessible from any IP, 
+                                and mixed email systems with Microsoft 365.
+                            </p>
+                            <div class="gcsb-actions">
+                                <a href="https://www.youtube.com/watch?v=T3_3GNyzZV8" target="_blank" class="yt-link">
+                                    <span>▶️</span> YouTube Breakdown
+                                </a>
+                            </div>
+                            <div class="softskill-tags">
+                                <span class="skill-tag security">Email Spoofing</span>
+                                <span class="skill-tag security">OSINT</span>
+                                <span class="skill-tag security">Disclosure</span>
+                            </div>
+                        </div>
+                        <div class="gcsb-evidence-bottom">
+                            <div class="evidence-grid-3">
+                                <img src="/static/images/ops-media/GSCB_using_wordpress.jpg" alt="GCSB WordPress" class="evidence-img">
+                                <img src="/static/images/ops-media/GSCB_using_3rdpartymailprovider.jpg" alt="GCSB Mail Provider" class="evidence-img">
+                                <div class="evidence-video">
+                                    <video controls preload="metadata">
+                                        <source src="/static/images/ops-media/gscb_xss.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intel Note -->
+                <div class="intel-notice">
+                    <span class="intel-icon">🔏</span>
+                    <p>
+                        Intel on New Zealand corruption, money laundering, and sexual deviations of major New Zealand MPs available on request.
+                        <span class="intel-subtext">Documented evidence on political misconduct and financial irregularities.</span>
+                        <span class="intel-disclaimer">NOTE: I am in sound mental and physical health and I am not suicidal.</span>
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Soft Skills Section -->
+        <section class="projects-section softskills-section">
+            <h2 class="section-title">🌍 Soft Skills & Global Experience</h2>
+            <div class="softskills-content">
+                
+                <div class="softskill-card">
+                    <div class="softskill-image">
+                        <img src="/static/images/ops-media/UnitedFront.jpg" alt="United Front - CCP Friendship Group">
+                    </div>
+                    <div class="softskill-info">
+                        <h3>✍️ Political Writing</h3>
+                        <p>
+                            Published anti-neoliberal pieces for CCP friendship group publications. 
+                            Contributed analysis on Western economic policies and their global impact 
+                            from an alternative perspective.
+                        </p>
+                        <div class="softskill-tags">
+                            <span class="skill-tag">Political Analysis</span>
+                            <span class="skill-tag">Published Writer</span>
+                            <span class="skill-tag">International Relations</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clandestine Operations Manual Writing Sample -->
+                <div class="softskill-card writing-sample-card">
+                    <div class="softskill-info full-width">
+                        <h3>🐍 Clandestine Operations Manual <span class="sample-badge">Writing Sample</span></h3>
+                        <p class="writing-intro">
+                            A comprehensive training document on psychological conditioning, persona adoption, 
+                            and tradecraft techniques drawing from Eastern philosophy and esoteric practices.
+                        </p>
+                        <div class="writing-sample-preview">
+                            <div class="manual-section">
+                                <h4>Operative Conditioning and Role Assumption</h4>
+                                <p>
+                                    In clandestine operations, every engagement is an <em>insight role</em>—a tactical framework 
+                                    where operatives adopt and internalize personas, ideologies, or behaviors as tools for mission 
+                                    success. Beliefs and opinions are not fixed; they are garments to be worn and discarded as 
+                                    dictated by operational needs...
+                                </p>
+                            </div>
+                        </div>
+                        <div class="writing-sample-actions">
+                            <button class="expand-btn" onclick="toggleWritingSample(this)">📖 Expand Full Document</button>
+                            <a href="/writing/clandestine-manual.html" class="read-more-btn">📄 Read on Dedicated Page</a>
+                        </div>
+                        <div class="writing-sample-content" style="display: none;">
+                            <div class="manual-section">
+                                <h4>Operative Conditioning and Role Assumption</h4>
+                                <p>
+                                    In clandestine operations, every engagement is an <em>insight role</em>—a tactical framework 
+                                    where operatives adopt and internalize personas, ideologies, or behaviors as tools for mission 
+                                    success. Beliefs and opinions are not fixed; they are garments to be worn and discarded as 
+                                    dictated by operational needs. This adaptability is essential, transforming the operative into 
+                                    a serpent-like figure—cunning, fluid, and unbound by static allegiance.
+                                </p>
+                                <p>
+                                    Revealing one's authentic self to transient contacts—individuals unlikely to be encountered 
+                                    again—carries significant operational risk. Such disclosures invite exploitation, compromise 
+                                    tradecraft, and jeopardize mission integrity. Operatives must maintain disciplined detachment, 
+                                    viewing exposure of their true self as an unacceptable vulnerability.
+                                </p>
+                            </div>
+
+                            <div class="manual-section">
+                                <h4>Understanding Ego, Self, and Self-Awareness</h4>
+                                <ul class="manual-list">
+                                    <li><strong>What is the Ego?</strong> The ego is the part of your mind that says "this is me." 
+                                    It's the story you tell yourself about who you are—your name, your past, your likes, dislikes, 
+                                    and beliefs. In operations, this box is a trap.</li>
+                                    <li><strong>What is the Self?</strong> The self is deeper than the ego—it's the core of your 
+                                    awareness, the part of you that observes your thoughts and feelings without being caught up 
+                                    in them. The quiet watcher behind your eyes.</li>
+                                    <li><strong>What is Self-Awareness?</strong> Self-awareness is the ability to notice your 
+                                    thoughts, emotions, and behaviors as they happen, without automatically believing or acting 
+                                    on them. Your anchor during total role immersion.</li>
+                                </ul>
+                            </div>
+
+                            <div class="manual-section">
+                                <h4>Basic Practices for Beginners</h4>
+                                <ul class="manual-list">
+                                    <li><strong>Notice Your Thoughts (5 Min Daily):</strong> Sit quietly and watch your thoughts 
+                                    like clouds passing in the sky. Don't judge or follow them—just observe.</li>
+                                    <li><strong>Question Your Labels:</strong> Mentally list three things you believe about yourself. 
+                                    Then ask, "Who would I be without this label?"</li>
+                                    <li><strong>Mirror Role-Play (10 Min Weekly):</strong> Practice becoming a character—change 
+                                    your posture, voice, or expressions. Then pause and ask, "Who is controlling this act?"</li>
+                                    <li><strong>Tantric Breathing (15 Min Daily):</strong> Visualize energy moving through your 
+                                    body. Each breath dissolves a piece of your ego until only pure awareness remains.</li>
+                                </ul>
+                            </div>
+
+                            <div class="manual-section">
+                                <h4>Operative Progression Path</h4>
+                                <div class="progression-diagram">
+                                    <div class="progression-stage">
+                                        <span class="stage-label">Novice</span>
+                                        <span class="stage-time">0-3 months</span>
+                                        <p>Basic self-awareness, ego dissolution, short-term persona adoption (1-2 days)</p>
+                                    </div>
+                                    <div class="progression-arrow">→</div>
+                                    <div class="progression-stage">
+                                        <span class="stage-label">Intermediate</span>
+                                        <span class="stage-time">3-12 months</span>
+                                        <p>Sustained persona adoption (1-4 weeks), situational awareness, social engineering</p>
+                                    </div>
+                                    <div class="progression-arrow">→</div>
+                                    <div class="progression-stage">
+                                        <span class="stage-label">Adept</span>
+                                        <span class="stage-time">12+ months</span>
+                                        <p>Complex long-term insight roles, advanced tradecraft, counter-detection</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="manual-section">
+                                <h4>Tradecraft for Insight Roles</h4>
+                                <ul class="manual-list">
+                                    <li><strong>Social Engineering:</strong> Leverage half-truths and persona-driven storytelling. 
+                                    Mirror speech patterns, slang, or cultural references to blend in.</li>
+                                    <li><strong>Body Language Control:</strong> Align physical mannerisms with the adopted persona. 
+                                    Use tantric breathing to calm involuntary cues.</li>
+                                    <li><strong>Situational Awareness:</strong> Continuously read the environment to adapt dynamically. 
+                                    Observe subtle shifts in group dynamics and adjust behavior accordingly.</li>
+                                </ul>
+                            </div>
+
+                            <div class="manual-section">
+                                <h4>Esoteric Conditioning for Role Mastery</h4>
+                                <ul class="manual-list">
+                                    <li><strong>Archetype Work:</strong> Adopt archetypal roles as templates—the Trickster (cunning), 
+                                    the Sage (wise), or the Warrior (bold). Study each archetype's traits and practice embodying them.</li>
+                                    <li><strong>Ritualized Role Transition:</strong> Mark persona adoption/shedding with rituals. 
+                                    Recite: <em>"I am the serpent, ever-shifting."</em></li>
+                                    <li><strong>Cosmic Impermanence:</strong> Reflect on the Hindu concept of <em>maya</em> (illusion). 
+                                    All forms, including identity, are transient.</li>
+                                </ul>
+                            </div>
+
+                            <div class="manual-section">
+                                <h4>Counter-Detection Strategies</h4>
+                                <ul class="manual-list">
+                                    <li><strong>Behavioral Consistency:</strong> Memorize a flexible backstory blending verifiable 
+                                    details with half-truths. Practice responses to common questions.</li>
+                                    <li><strong>Micro-Expression Control:</strong> Suppress involuntary cues through breathing and 
+                                    mindfulness. Ensure face and body fully align with the persona.</li>
+                                    <li><strong>Deception Detection:</strong> Recognize scrutiny through prolonged eye contact, 
+                                    shifts in tone, or probing questions. Adapt in real-time.</li>
+                                </ul>
+                            </div>
+
+                            <div class="manual-section operative-wisdom">
+                                <h4>🐍 Operative Mantra</h4>
+                                <blockquote>
+                                    "I am the serpent, ever-shifting."
+                                </blockquote>
+                                <p class="wisdom-note">
+                                    You are not the same person when you go to bed at night as when you wake up in the morning. 
+                                    Identity is fluid, evolving with every experience. Recognizing and exploiting this fluidity 
+                                    allows operatives to shatter mental chains, enabling seamless transitions between roles.
+                                </p>
+                            </div>
+                            <div class="collapse-section">
+                                <button class="collapse-btn" onclick="toggleWritingSample(this)">▲ Collapse Document</button>
+                            </div>
+                        </div>
+                        <div class="softskill-tags">
+                            <span class="skill-tag">Technical Writing</span>
+                            <span class="skill-tag">Psychology</span>
+                            <span class="skill-tag">Tradecraft</span>
+                            <span class="skill-tag">Eastern Philosophy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="softskill-card">
+                    <div class="softskill-info full-width">
+                        <h3>🗺️ International Connections</h3>
+                        <p>
+                            Traveled extensively and built genuine local connections worldwide. 
+                            Not just a tourist - stayed with locals and immersed in cultures. 
+                            In Serbia, stayed at the apartment of the daughter of 
+                            <a href="https://en.wikipedia.org/wiki/S%C3%A1ndor_P%C3%A1ll" target="_blank" class="inline-link">Sándor Páll</a>, 
+                            the renowned Hungarian-Serbian writer and journalist.
+                        </p>
+                        <div class="countries-visited">
+                            <span class="country-tag">🇷🇸 Serbia</span>
+                            <span class="country-tag">🇧🇦 Bosnia & Herzegovina</span>
+                            <span class="country-tag">🇧🇬 Bulgaria</span>
+                            <span class="country-tag">🇹🇭 Thailand</span>
+                            <span class="country-tag">🇦🇺 Australia</span>
+                            <span class="country-tag">🇸🇬 Singapore</span>
+                            <span class="country-tag">🇵🇱 Poland</span>
+                            <span class="country-tag">🇸🇪 Sweden</span>
+                            <span class="country-tag">🇹🇷 Turkey</span>
+                            <span class="country-tag">🇨🇱 Chile</span>
+                            <span class="country-tag">🇺🇸 USA</span>
+                            <span class="country-tag">🇫🇯 Fiji</span>
+                            <span class="country-tag">🇮🇩 Indonesia</span>
+                            <span class="country-tag">🇷🇺 Russia</span>
+                            <span class="country-tag">🇦🇪 UAE</span>
+                        </div>
+                        <div class="softskill-tags">
+                            <span class="skill-tag">Cross-Cultural Communication</span>
+                            <span class="skill-tag">Language Learning</span>
+                            <span class="skill-tag">Adaptability</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="softskill-card intel-card">
+                    <div class="softskill-info full-width">
+                        <h3>🇳🇿 New Zealand Political Intelligence</h3>
+                        <p>
+                            Intel on New Zealand corruption, money laundering, and sexual deviations 
+                            of major New Zealand MPs <strong>available on request</strong>.
+                        </p>
+                        <p class="intel-details">
+                            Documented evidence on political misconduct and financial irregularities.
+                        </p>
+                        <div class="softskill-tags">
+                            <span class="skill-tag intel-tag">OSINT</span>
+                            <span class="skill-tag intel-tag">Political Research</span>
+                            <span class="skill-tag intel-tag">Financial Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="softskill-card intel-card">
+                    <div class="softskill-image intel-image">
+                        <img src="/static/images/ops-media/o9a_bomb.jpg" alt="O9A Intelligence" class="intel-thumbnail">
+                    </div>
+                    <div class="softskill-info">
+                        <h3>☠️ O9A / Black Order / Esoteric Right Intel</h3>
+                        <p>
+                            Live intelligence on <strong>Order of Nine Angles (O9A)</strong>, 
+                            <strong>Black Order</strong>, and related satanic esoteric right groups. 
+                            Black Order headquarters located in New Zealand.
+                        </p>
+                        <p class="intel-details">
+                            Ongoing monitoring and documentation of organizational structures, 
+                            networks, recruitment activities, and operational patterns.
+                        </p>
+                        <div class="softskill-tags">
+                            <span class="skill-tag intel-tag">OSINT</span>
+                            <span class="skill-tag intel-tag">Extremism Research</span>
+                            <span class="skill-tag intel-tag">Network Analysis</span>
+                            <span class="skill-tag intel-tag">Active Collection</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Ecosystem Section -->
+        <section class="ecosystem-section">
+            <h2 class="section-title">The Frog Ecosystem</h2>
+            <p class="ecosystem-intro">
+                All my projects share common design principles and infrastructure. 
+                The FrogNET ecosystem connects mapping, intelligence, VPN, and AI tools.
+            </p>
+            <div class="ecosystem-diagram">
+                <div class="eco-node central">
+                    <span>🐸</span>
+                    <p>FrogNet</p>
+                </div>
+                <div class="eco-connections">
+                    <div class="eco-node">
+                        <a href="/projects/frogmaps">
+                            <span>🗺️</span>
+                            <p>FrogMaps</p>
+                        </a>
+                    </div>
+                    <div class="eco-node">
+                        <a href="/projects/ego">
+                            <span>🔍</span>
+                            <p>Ego</p>
+                        </a>
+                    </div>
+                    <div class="eco-node">
+                        <a href="/projects/vpnbot">
+                            <span>🐸</span>
+                            <p>FrogVPN</p>
+                        </a>
+                    </div>
+                    <div class="eco-node">
+                        <a href="#frogtalk">
+                            <span>💬</span>
+                            <p>FrogTalk</p>
+                        </a>
+                    </div>
+                    <div class="eco-node">
+                        <a href="/projects/paths">
+                            <span>🧭</span>
+                            <p>Paths</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="projects-footer">
+        <p>Built with 💚 by Luke Maccabee</p>
+        <div class="footer-links">
+            <a href="https://github.com/deadinternetfox" target="_blank">GitHub</a>
+            <a href="/">Home</a>
+            <a href="/ai-solutions">AI Solutions</a>
+        </div>
+    </footer>
+
+    <!-- Lightbox Overlay -->
+    <div id="lightbox" class="lightbox-overlay">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <script>
+        function toggleWritingSample(btn) {
+            const card = btn.closest('.writing-sample-card');
+            const content = card.querySelector('.writing-sample-content');
+            const expandBtn = card.querySelector('.expand-btn');
+            
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                expandBtn.innerHTML = '📖 Collapse Document';
+                content.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                content.style.display = 'none';
+                expandBtn.innerHTML = '📖 Expand Full Document';
+                card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxClose = document.querySelector('.lightbox-close');
+
+        // Make all project images clickable
+        document.querySelectorAll('.intel-thumbnail, .softskill-image img, .card-image img, .project-image img').forEach(img => {
+            img.classList.add('lightbox-trigger');
+            img.addEventListener('click', function() {
+                lightbox.classList.add('active');
+                lightboxImg.src = this.src;
+                lightboxCaption.textContent = this.alt || '';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close lightbox on X click
+        lightboxClose.addEventListener('click', closeLightbox);
+
+        // Close lightbox on overlay click
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Close lightbox on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    </script>
+</body>
+</html>

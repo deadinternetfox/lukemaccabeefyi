@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baud Rate Brute - Serial Utility | Luke Maccabee</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Baud Rate Brute - Serial Port Utility">
+    <meta name="description" content="Serial port utility for hardware hacking. Auto-detect baud rates and interact with embedded devices via UART/serial connections.">
+    <meta name="author" content="Luke Maccabee">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lukemaccabee.fyi/projects/baud-rate-brute">
+    <meta property="og:title" content="🔌 Baud Rate Brute - Serial Port Utility">
+    <meta property="og:description" content="Serial port utility for hardware hacking and embedded device interaction.">
+    <meta property="og:image" content="https://lukemaccabee.fyi/static/images/avatar.png">
+    <meta property="og:site_name" content="Luke Maccabee">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="https://lukemaccabee.fyi/projects/baud-rate-brute">
+    <meta property="twitter:title" content="🔌 Baud Rate Brute - Serial Port Utility">
+    <meta property="twitter:description" content="Serial port utility for hardware hacking.">
+    <meta property="twitter:image" content="https://lukemaccabee.fyi/static/images/avatar.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/static/images/avatar.png">
+    
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/projects.css">
+    <link rel="stylesheet" href="/static/css/project-story.css">
+</head>
+<body>
+    <header class="projects-header">
+        <nav class="projects-nav" style="margin-top: 0; margin-bottom: 1rem;">
+            <a href="/">Home</a>
+            <a href="/projects">Projects</a>
+        </nav>
+        <h1>🔌 Baud Rate Brute</h1>
+        <p class="header-subtitle">Serial Port Baud Rate Detection</p>
+    </header>
+
+    <main class="story-container">
+        <!-- Hero Section -->
+        <section class="story-hero">
+            <div class="hero-content">
+                <div class="project-meta">
+                    <span class="meta-item">📅 Created: October 2024</span>
+                    <span class="meta-item">🔧 Status: Complete</span>
+                    <span class="meta-item">🐍 Language: Python</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overview -->
+        <section class="story-section">
+            <h2>📖 The Problem</h2>
+            <div class="story-content">
+                <p>
+                    When working with serial devices, one of the most frustrating problems is determining 
+                    the correct baud rate. Get it wrong, and you see garbled text. Many devices don't 
+                    document their settings, or you might be reverse-engineering unknown hardware.
+                </p>
+                <p>
+                    <strong>Baud Rate Brute</strong> solves this by automatically testing all common baud rates 
+                    and detecting which one produces readable output - no more manual trial and error.
+                </p>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="story-section">
+            <h2>⚙️ How It Works</h2>
+            <div class="features-list">
+                <div class="feature-item">
+                    <h3>1️⃣ Connection</h3>
+                    <p>
+                        Connect to the specified serial port (e.g., COM3, /dev/ttyUSB0) and 
+                        iterate through common baud rates: 300, 1200, 2400, 4800, 9600, 19200, 
+                        38400, 57600, 115200, and more.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <h3>2️⃣ Sampling</h3>
+                    <p>
+                        At each baud rate, read incoming data for a configurable duration 
+                        and analyze the byte patterns received.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <h3>3️⃣ Detection</h3>
+                    <p>
+                        Use heuristics to identify readable ASCII text vs. garbage bytes. 
+                        High printable character ratio = correct baud rate found.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <h3>4️⃣ Report</h3>
+                    <p>
+                        Output the detected baud rate along with sample data, 
+                        ready for immediate use with your preferred terminal.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="story-section">
+            <h2>🛠️ Technology</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon">🐍</div>
+                    <h3>Python 3</h3>
+                    <p>Cross-platform compatibility for Windows, Linux, and macOS</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🔌</div>
+                    <h3>PySerial</h3>
+                    <p>Industry-standard library for serial port communication</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">⚡</div>
+                    <h3>Argparse</h3>
+                    <p>Command-line interface for flexible usage</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases -->
+        <section class="story-section">
+            <h2>🎯 Use Cases</h2>
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <h3>🔧 Hardware Hacking</h3>
+                    <p class="solution">Connect to unknown UART headers on embedded devices, routers, IoT gadgets - quickly find the right settings.</p>
+                </div>
+                <div class="challenge-card">
+                    <h3>🔬 Reverse Engineering</h3>
+                    <p class="solution">When documentation is unavailable, brute force beats guessing through dozens of combinations manually.</p>
+                </div>
+                <div class="challenge-card">
+                    <h3>🖥️ Legacy Equipment</h3>
+                    <p class="solution">Old industrial equipment, scientific instruments, and vintage computers often have non-standard settings.</p>
+                </div>
+                <div class="challenge-card">
+                    <h3>📟 Microcontrollers</h3>
+                    <p class="solution">Arduino, ESP32, Raspberry Pi Pico - when you forgot what baud rate you configured in your firmware.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Usage -->
+        <section class="story-section">
+            <h2>💻 Quick Start</h2>
+            <div class="story-content">
+                <pre style="background: #1a1a1a; padding: 1.5rem; border-radius: 8px; overflow-x: auto; color: #00ff00; font-family: 'Courier New', monospace;">
+# Clone the repository
+git clone https://github.com/deadinternetfox/Baud-Rate-Brute.git
+
+# Install dependencies
+pip install pyserial
+
+# Run the tool
+python baud_brute.py /dev/ttyUSB0
+
+# Or on Windows
+python baud_brute.py COM3
+                </pre>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="story-cta">
+            <h2>Get the Tool</h2>
+            <p>Simple, effective, and open source.</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/deadinternetfox/Baud-Rate-Brute" target="_blank" class="project-btn primary large">
+                    ⭐ View on GitHub
+                </a>
+                <a href="/projects" class="project-btn secondary large">
+                    ← Back to Projects
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="projects-footer">
+        <p>Built with 💚 by Luke Maccabee</p>
+        <div class="footer-links">
+            <a href="https://github.com/deadinternetfox" target="_blank">GitHub</a>
+            <a href="/">Home</a>
+            <a href="/projects">Projects</a>
+        </div>
+    </footer>
+</body>
+</html>

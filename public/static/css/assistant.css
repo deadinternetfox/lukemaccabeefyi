@@ -1,0 +1,524 @@
+.assistant-chat {
+    position: fixed;
+    top: 20px;  /* Changed from bottom to top */
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Chat toggle and avatar positioning */
+.chat-toggle {
+    width: 120px; /* Doubled from 60px */
+    height: 120px; /* Doubled from 60px */
+    position: relative; /* Changed from fixed to relative */
+    background: transparent; /* Remove background */
+    border: none; /* Remove border */
+    z-index: 1000;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; /* Changed to column */
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+/* Remove the tooltip styles */
+.chat-toggle::before {
+    display: none;
+}
+
+.chat-toggle.hidden {
+    display: none; /* Hide toggle when chat is open */
+}
+
+.chat-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Avatar sizing */
+.assistant-avatar {
+    width: 80px; /* Doubled from 40px */
+    height: 80px; /* Doubled from 40px */
+    border-radius: 50%;
+    border: none; /* Remove border */
+    transition: all 0.3s ease;
+}
+
+/* Update label styles */
+.assistant-label {
+    color: #0f0;
+    font-size: 14px;
+    margin-top: 12px;
+    text-align: center;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+    font-weight: 500;
+}
+
+/* Remove all swirl effects */
+.swirl-effect, .swirl-line {
+    display: none;
+}
+
+.chat-toggle.active .swirl-line {
+    opacity: 1;
+    animation: swirlRotate 8s linear infinite;
+}
+
+.swirl-line::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #0f0;
+    border-radius: 50%;
+    top: -2px;
+    left: 50%;
+    box-shadow: 0 0 8px #0f0;
+}
+
+@keyframes swirl {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes swirlRotate {
+    0% { transform: translate(-50%, -50%) rotate(0deg) scale(0.8); }
+    50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.2); }
+    100% { transform: translate(-50%, -50%) rotate(360deg) scale(0.8); }
+}
+
+/* Chat window styles */
+.chat-window {
+    position: fixed;
+    top: 0;
+    right: -500px; /* Increased from -400px */
+    width: 500px; /* Increased from 400px */
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    border-left: 1px solid rgba(0, 255, 0, 0.5);
+    border-radius: 0;
+    transition: right 0.3s ease;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(5px); /* Add blur effect behind chat window */
+}
+
+.chat-window.hidden {
+    display: block;
+    right: -500px; /* Increased from -400px */
+}
+
+.chat-window:not(.hidden) {
+    right: 0;
+}
+
+.chat-header {
+    background: rgba(0, 0, 0, 0.95);
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Button styling */
+.close-button, .chat-send {
+    background: rgba(0, 255, 0, 0.2);
+    border: 1px solid rgba(0, 255, 0, 0.5);
+    color: #0f0;
+    cursor: pointer;
+}
+
+.close-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(0, 255, 0, 0.2);
+    border: 1px solid rgba(0, 255, 0, 0.5);
+    color: #0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.close-button:hover, .chat-send:hover {
+    background: rgba(0, 255, 0, 0.3);
+    border-color: rgba(0, 255, 0, 0.8);
+}
+
+.chat-header span {
+    color: #0f0;
+    font-size: 1.1em;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px 15px 15px 15px;
+}
+
+.chat-messages .message:first-child {
+    margin-top: 5px;  /* Reduced from 10px */
+}
+
+.chat-input-area {
+    padding: 0 15px 15px 15px; /* Removed top padding */
+    background: rgba(0, 0, 0, 0.8);
+    border-top: none; /* Remove top border */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 4px;
+    color: #0f0;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.chat-input:focus {
+    outline: none;
+    border-color: rgba(0, 255, 0, 0.8);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+/* Match send button style with index page */
+.chat-send {
+    padding: 8px 15px;
+    background: rgba(0, 255, 0, 0.2);
+    color: #0f0;
+    border: 1px solid rgba(0, 255, 0, 0.5);
+    font-size: 14px;
+    min-width: 80px;
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.chat-send:hover {
+    background: rgba(0, 255, 0, 0.3);
+    border-color: rgba(0, 255, 0, 0.8);
+}
+
+/* Remove the button effect since it's not on index */
+.button-effect {
+    display: none;
+}
+
+.button-text {
+    position: relative;
+    z-index: 1;
+}
+
+.message {
+    margin-bottom: 15px;  /* Reduced from 25px */
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Add this for better positioning */
+}
+
+.message.user {
+    align-items: flex-end;
+}
+
+.message.bot {
+    align-items: flex-start;
+}
+
+.message-content {
+    position: relative;
+    max-width: 80%;
+    padding: 8px 10px;  /* Reduced from 10px 12px */
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #0f0;
+    border: 1px solid rgba(0, 255, 0, 0.3);
+}
+
+.message-label {
+    position: absolute;
+    top: -20px;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.message.user .message-label {
+    right: 0;
+    color: #0f0;
+}
+
+.message.bot .message-label {
+    left: 0;
+    color: #0ff; /* Different color for Luke's messages */
+}
+
+.message.user .message-content {
+    background: rgba(0, 255, 0, 0.1);
+    border-bottom-right-radius: 0;
+    color: #0f0;
+}
+
+.message.bot .message-content {
+    background: rgba(0, 255, 255, 0.1); /* Slightly different background for Luke */
+    border-bottom-left-radius: 0;
+    color: #0ff;
+    border-color: rgba(0, 255, 255, 0.3);
+}
+
+.message-text {
+    margin: 0;
+    padding: 0;
+    white-space: normal;  /* Changed from pre-line */
+    line-height: 1.5;
+}
+
+/* Add specific styling for first message */
+.chat-messages .message:first-child .message-content {
+    padding: 8px 10px;  /* Match reduced padding */
+}
+
+.media-content {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.response-media {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 5px 0;
+}
+
+video.response-media {
+    max-height: 300px;
+}
+
+.response-media {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    object-fit: cover;
+}
+
+video.response-media {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .response-media {
+        max-width: 150px;
+        max-height: 150px;
+    }
+
+    .chat-window {
+        width: 100%;
+        right: -100%;
+    }
+    
+    .chat-window:not(.hidden) {
+        right: 0;
+    }
+
+    .chat-toggle {
+        right: 50%;
+        transform: translateX(50%);
+        width: 100px;
+        height: 100px;
+        position: fixed; /* Keep fixed on mobile */
+        bottom: 20px; /* Keep at bottom on mobile */
+        top: auto; /* Reset top position */
+    }
+    
+    .assistant-avatar {
+        width: 70px; /* Slightly smaller on mobile */
+        height: 70px;
+    }
+
+    .chat-overlay {
+        width: 100%; /* Full width on mobile */
+    }
+
+    .assistant-chat {
+        top: auto;
+        bottom: 20px;
+    }
+}
+
+/* Add overlay for when chat is open */
+.chat-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 500px; /* Match chat window width */
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3px);
+    display: none;
+    z-index: 998;
+}
+
+.chat-overlay.active {
+    display: block;
+}
+
+/* Add prompt hints styling */
+.prompt-hints {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 15px 0 10px 0; /* Increased top margin */
+    padding: 0 5px 15px 5px;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.3); /* Add border below prompts */
+    padding-bottom: 15px; /* Add some spacing above border */
+}
+
+.prompt-button {
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    color: #0f0;
+    padding: 8px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.prompt-button:hover {
+    background: rgba(0, 255, 0, 0.2);
+    border-color: rgba(0, 255, 0, 0.6);
+}
+
+.input-with-button {
+    display: flex;
+    gap: 10px;
+}
+
+/* Add typing indicator styles */
+.typing-indicator {
+    color: #0f0;
+    opacity: 0.7;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.3; }
+}
+
+/* Add typing dots animation */
+.typing-dots {
+    display: flex;
+    gap: 4px;
+    padding: 10px 15px;
+}
+
+.typing-dots span {
+    width: 4px;
+    height: 4px;
+    background: #0f0;
+    border-radius: 50%;
+    animation: typingDots 1.4s infinite;
+    opacity: 0.3;
+}
+
+.typing-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typingDots {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+.message.loading .message-content {
+    background: transparent;
+    border: none;
+}
+
+/* Add scrollbar styling to the root */
+:root {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 255, 0, 0.5) rgba(0, 0, 0, 0.2);
+}
+
+/* Webkit scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 0, 0.5);
+    border-radius: 4px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 0, 0.7);
+}
+
+/* Add message sources styling */
+.message-sources {
+    font-size: 11px;
+    color: rgba(0, 255, 255, 0.6);
+    margin-top: 4px;
+    margin-left: 15px;
+    font-style: italic;
+}
+
+.message.bot .message-sources {
+    text-align: left;
+}
+
+.message.user .message-sources {
+    text-align: right;
+}
+
+/* Refine carousel layout for multiple images */
+.media-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+/* Make sources stand out more */
+.message-sources {
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(0, 255, 0, 0.08);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 8px;
+    font-size: 0.9rem;
+}

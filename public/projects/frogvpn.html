@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrogVPN - Development Story | Luke Maccabee</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="FrogVPN - Censorship-Resistant VPN">
+    <meta name="description" content="Censorship-resistant VPN using Xray/VLESS with Reality protocol. Telegram bot payments, custom Android app, multi-language support.">
+    <meta name="author" content="Luke Maccabee">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lukemaccabee.fyi/projects/frogvpn">
+    <meta property="og:title" content="🐸 FrogVPN - Censorship-Resistant VPN">
+    <meta property="og:description" content="Censorship-resistant VPN using Xray/VLESS with Reality protocol. Bypasses DPI and firewalls.">
+    <meta property="og:image" content="https://lukemaccabee.fyi/static/images/avatar.png">
+    <meta property="og:site_name" content="Luke Maccabee">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="https://lukemaccabee.fyi/projects/frogvpn">
+    <meta property="twitter:title" content="🐸 FrogVPN - Censorship-Resistant VPN">
+    <meta property="twitter:description" content="Xray/VLESS VPN with Reality protocol for bypassing censorship.">
+    <meta property="twitter:image" content="https://lukemaccabee.fyi/static/images/avatar.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/static/images/avatar.png">
+    
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/projects.css">
+    <link rel="stylesheet" href="/static/css/project-story.css">
+</head>
+<body>
+    <header class="projects-header">
+        <nav class="projects-nav" style="margin-top: 0; margin-bottom: 1rem;">
+            <a href="/">Home</a>
+            <a href="/projects">Projects</a>
+        </nav>
+        <h1>🔒 FrogVPN</h1>
+        <p class="header-subtitle">Telegram Bot-Powered VPN Service</p>
+    </header>
+
+    <main class="story-container">
+        <!-- Hero Section -->
+        <section class="story-hero">
+            <div class="hero-content">
+                <div class="project-meta">
+                    <span class="meta-item">📅 Started: September 2025</span>
+                    <span class="meta-item">🔧 Status: Production</span>
+                    <span class="meta-item">⭐ Active Users: Growing</span>
+                </div>
+                <div class="hero-links">
+                    <a href="https://github.com/lukemaccabee/frogvpn" target="_blank" class="project-btn secondary">
+                        💻 View Source
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overview -->
+        <section class="story-section">
+            <h2>📖 The Vision</h2>
+            <div class="story-content">
+                <p>
+                    FrogVPN was born from the need for a simple, user-friendly VPN service that doesn't 
+                    require technical knowledge to set up. By leveraging Telegram as the interface, users 
+                    can manage their VPN subscriptions, generate configs, and monitor usage all from a 
+                    familiar chat interface.
+                </p>
+                <p>
+                    The system handles everything automatically — server provisioning, user management, 
+                    payment processing, and config generation. Users just click buttons in Telegram.
+                </p>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="story-section">
+            <h2>🛠️ Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon">🐍</div>
+                    <h3>Python + aiogram</h3>
+                    <p>Async Telegram bot framework for responsive user interactions</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">⚡</div>
+                    <h3>XRay Core</h3>
+                    <p>High-performance proxy server supporting multiple protocols</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🐳</div>
+                    <h3>Docker</h3>
+                    <p>Containerized deployment for consistent, reproducible infrastructure</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🗄️</div>
+                    <h3>SQLite</h3>
+                    <p>Lightweight database for user data and subscription management</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">💳</div>
+                    <h3>Crypto Payments</h3>
+                    <p>Integrated cryptocurrency payment processing for subscriptions</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">📊</div>
+                    <h3>X-UI Panel</h3>
+                    <p>Admin dashboard for server management and monitoring</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features -->
+        <section class="story-section">
+            <h2>✨ Key Features</h2>
+            <div class="features-list">
+                <div class="feature-item">
+                    <h3>🤖 Telegram Bot Interface</h3>
+                    <p>
+                        Complete VPN management through Telegram — no apps to install, no websites to visit. 
+                        Users interact through familiar chat buttons and commands.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <h3>📱 Multi-Protocol Support</h3>
+                    <p>
+                        Supports VLESS, VMess, Trojan, and Shadowsocks protocols with automatic 
+                        config generation for various client apps.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <h3>💰 Automated Subscriptions</h3>
+                    <p>
+                        Crypto payment integration with automatic subscription activation, 
+                        renewal reminders, and usage tracking.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <h3>📈 Usage Analytics</h3>
+                    <p>
+                        Users can check their data usage, connection history, and subscription 
+                        status directly in the bot.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture -->
+        <section class="story-section">
+            <h2>🏗️ System Architecture</h2>
+            <div class="story-content">
+                <p><strong>Bot Layer:</strong> Python aiogram bot handles all user interactions, subscription management, and config delivery.</p>
+                <p><strong>Backend API:</strong> FastAPI service manages user data, payment verification, and XRay configuration.</p>
+                <p><strong>Proxy Layer:</strong> XRay instances running in Docker containers, managed via X-UI panels.</p>
+                <p><strong>Payment Layer:</strong> Cryptocurrency payment processor with webhook callbacks for automatic activation.</p>
+            </div>
+        </section>
+
+        <!-- Challenges -->
+        <section class="story-section">
+            <h2>🧗 Challenges & Solutions</h2>
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <h3>Challenge: Protocol Blocking</h3>
+                    <p class="problem">Some networks actively block VPN protocols using deep packet inspection.</p>
+                    <p class="solution"><strong>Solution:</strong> Implemented multiple protocols and obfuscation techniques. Users can switch protocols if one is blocked.</p>
+                </div>
+                <div class="challenge-card">
+                    <h3>Challenge: Config Distribution</h3>
+                    <p class="problem">QR codes and config files need to work across many different client apps.</p>
+                    <p class="solution"><strong>Solution:</strong> Built a config generator that creates compatible URIs for all major VPN clients on iOS, Android, Windows, and macOS.</p>
+                </div>
+                <div class="challenge-card">
+                    <h3>Challenge: Payment Verification</h3>
+                    <p class="problem">Crypto payments need reliable verification before activating subscriptions.</p>
+                    <p class="solution"><strong>Solution:</strong> Integrated with payment APIs that provide webhook callbacks, with fallback manual verification for edge cases.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security -->
+        <section class="story-section">
+            <h2>🔐 Security Considerations</h2>
+            <div class="features-list">
+                <div class="feature-item">
+                    <h3>Zero Logging Policy</h3>
+                    <p>No connection logs are stored. Only minimal subscription data is kept for service operation.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Encrypted Configs</h3>
+                    <p>All configuration files use strong encryption and unique per-user credentials.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Regular Key Rotation</h3>
+                    <p>Server keys are rotated regularly to maintain security even if a config is compromised.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="story-cta">
+            <h2>Interested in FrogVPN?</h2>
+            <p>Check out the source code or get in touch for more info</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/lukemaccabee/frogvpn" target="_blank" class="project-btn primary large">
+                    💻 View on GitHub
+                </a>
+                <a href="/projects" class="project-btn secondary large">
+                    ← Back to Projects
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="projects-footer">
+        <p>Built with 💚 by Luke Maccabee</p>
+        <div class="footer-links">
+            <a href="https://github.com/lukemaccabee" target="_blank">GitHub</a>
+            <a href="/">Home</a>
+            <a href="/projects">Projects</a>
+        </div>
+    </footer>
+</body>
+</html>

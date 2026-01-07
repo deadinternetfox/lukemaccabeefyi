@@ -1,0 +1,509 @@
+/* Project Story Page Styles */
+
+.story-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Discovery Showcase */
+.discovery-showcase {
+    margin-top: 1.5rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 50, 50, 0.1);
+    border: 1px solid rgba(255, 100, 100, 0.4);
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.discovery-label {
+    color: #ff6b6b;
+    font-weight: bold;
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9em;
+}
+
+.discovery-link {
+    color: #0f0;
+    font-family: monospace;
+    font-size: 1.1em;
+    text-decoration: none;
+    padding: 0.3rem 0.6rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.discovery-link:hover {
+    background: rgba(0, 255, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.discovery-contents {
+    color: rgba(255, 200, 100, 0.9);
+    margin: 0.5rem 0 0 0;
+    font-size: 0.85em;
+}
+
+/* Hero Section */
+.story-hero {
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.project-meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.meta-item {
+    color: rgba(0, 255, 0, 0.7);
+    font-size: 0.95em;
+}
+
+.hero-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Story Sections */
+.story-section {
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.story-section h2 {
+    color: #0f0;
+    font-size: 1.8em;
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.2);
+}
+
+.story-content p {
+    color: rgba(0, 255, 0, 0.85);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+/* Tech Grid */
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.tech-item {
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.tech-item:hover {
+    border-color: rgba(0, 255, 0, 0.5);
+    transform: translateY(-3px);
+}
+
+.tech-icon {
+    font-size: 2.5em;
+    margin-bottom: 0.5rem;
+}
+
+.tech-item h3 {
+    color: #0f0;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1em;
+}
+
+.tech-item p {
+    color: rgba(0, 255, 0, 0.7);
+    font-size: 0.9em;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Features List */
+.features-list {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.feature-item {
+    padding: 1.5rem;
+    background: rgba(0, 255, 0, 0.05);
+    border-left: 3px solid #0f0;
+    border-radius: 0 10px 10px 0;
+}
+
+.feature-item h3 {
+    color: #0f0;
+    margin: 0 0 0.5rem 0;
+}
+
+.feature-item p {
+    color: rgba(0, 255, 0, 0.8);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(0, 255, 0, 0.3);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -26px;
+    top: 5px;
+    width: 14px;
+    height: 14px;
+    background: #000;
+    border: 2px solid rgba(0, 255, 0, 0.5);
+    border-radius: 50%;
+}
+
+.timeline-item.current .timeline-marker {
+    background: #0f0;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.timeline-content {
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.timeline-content h3 {
+    color: #0f0;
+    margin: 0 0 0.5rem 0;
+}
+
+.timeline-content p {
+    color: rgba(0, 255, 0, 0.8);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Challenges Grid */
+.challenges-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.challenge-card {
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.challenge-card h3 {
+    color: #0f0;
+    margin: 0 0 1rem 0;
+}
+
+.challenge-card .problem {
+    color: rgba(255, 150, 0, 0.9);
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+
+.challenge-card .solution {
+    color: rgba(0, 255, 0, 0.85);
+    margin: 0;
+}
+
+/* Future Grid */
+.future-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.future-item {
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 10px;
+    padding: 1.5rem;
+    position: relative;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75em;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.future-item.planned .status-badge {
+    background: rgba(0, 255, 0, 0.2);
+    color: #0f0;
+}
+
+.future-item.researching .status-badge {
+    background: rgba(255, 200, 0, 0.2);
+    color: #ffc800;
+}
+
+.future-item.in-progress .status-badge {
+    background: rgba(0, 150, 255, 0.2);
+    color: #0096ff;
+}
+
+.future-item h3 {
+    color: #0f0;
+    margin: 0.5rem 0;
+}
+
+.future-item p {
+    color: rgba(0, 255, 0, 0.7);
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* CTA Section */
+.story-cta {
+    background: linear-gradient(135deg, rgba(0, 50, 0, 0.9), rgba(0, 20, 0, 0.95));
+    border: 2px solid rgba(0, 255, 0, 0.4);
+    border-radius: 15px;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.story-cta h2 {
+    color: #0f0;
+    font-size: 2em;
+    margin: 0 0 0.5rem 0;
+}
+
+.story-cta p {
+    color: rgba(0, 255, 0, 0.7);
+    margin: 0 0 1.5rem 0;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.project-btn.large {
+    padding: 1rem 2rem;
+    font-size: 1.1em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .story-container {
+        padding: 1rem;
+    }
+    
+    .story-section {
+        padding: 1.5rem;
+    }
+    
+    .project-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .hero-links,
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .timeline {
+        padding-left: 25px;
+    }
+    
+    .timeline-marker {
+        left: -21px;
+    }
+}
+
+/* Challenge Items (alternative style) */
+.challenge-item {
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.challenge-item h3 {
+    color: #0f0;
+    margin: 0 0 0.75rem 0;
+    font-size: 1.2em;
+}
+
+.challenge-item p {
+    color: rgba(200, 255, 200, 0.9);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Architecture Diagram */
+.architecture-diagram {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.arch-layer {
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+}
+
+.arch-label {
+    display: block;
+    color: #0f0;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 0.75rem;
+}
+
+.arch-items {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.arch-item {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 255, 0, 0.4);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: rgba(200, 255, 200, 0.9);
+    font-size: 0.9em;
+}
+
+.arch-arrow {
+    color: #0f0;
+    font-size: 1.2em;
+    padding: 0.5rem 0;
+}
+
+/* Roadmap Styles */
+.roadmap {
+    display: grid;
+    gap: 1rem;
+}
+
+.roadmap-item {
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 10px;
+    padding: 1.25rem;
+}
+
+.roadmap-item h3 {
+    color: #0f0;
+    margin: 0.5rem 0;
+    font-size: 1.1em;
+}
+
+.roadmap-item p {
+    color: rgba(200, 255, 200, 0.85);
+    margin: 0;
+    font-size: 0.95em;
+}
+
+.roadmap-status {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.roadmap-status.planned {
+    background: rgba(0, 255, 0, 0.2);
+    color: #0f0;
+}
+
+.roadmap-status.exploring {
+    background: rgba(255, 165, 0, 0.2);
+    color: #ffa500;
+}
+
+.roadmap-status.in-progress {
+    background: rgba(0, 150, 255, 0.2);
+    color: #0096ff;
+}
+
+/* Back Section */
+.back-section {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(0, 255, 0, 0.2);
+}
+
+.back-btn {
+    display: inline-block;
+    background: rgba(0, 255, 0, 0.1);
+    border: 2px solid #0f0;
+    color: #0f0;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #0f0;
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    transform: translateX(-5px);
+}
