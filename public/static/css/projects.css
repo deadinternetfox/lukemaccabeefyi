@@ -1854,8 +1854,10 @@ html, body {
 }
 
 .disclosure-img {
-    max-width: 300px;
-    max-height: 200px;
+    max-width: 300px !important;
+    max-height: 200px !important;
+    width: auto !important;
+    height: auto !important;
     object-fit: cover;
     border-radius: 8px;
     border: 1px solid rgba(255, 50, 50, 0.3);
