@@ -393,12 +393,12 @@
         </section>
 
         <!-- Hardware Projects Grid -->
-        <section class="projects-section hardware-section ops-only">
+        <section class="projects-section hardware-section">
             <h2 class="section-title">🔧 Hardware</h2>
             <div class="projects-grid">
                 
-                <!-- Project Card: Cottonmouth Clone -->
-                <div class="project-card featured-card">
+                <!-- Project Card: Cottonmouth Clone (OPS ONLY) -->
+                <div class="project-card featured-card ops-only">
                     <div class="card-header">
                         <span class="project-icon">📡</span>
                         <h3>Cottonmouth Clone</h3>
@@ -422,8 +422,37 @@
                     </div>
                 </div>
 
-                <!-- Project Card: Sabaka Collar -->
-                <div class="project-card featured-card">
+                <!-- Project Card: Sabaka Collar (Corporate Version) -->
+                <div class="project-card featured-card corporate-only">
+                    <div class="card-header">
+                        <span class="project-icon">🐕</span>
+                        <h3>Sabaka IoT Collar</h3>
+                        <span class="card-badge">IoT</span>
+                    </div>
+                    <p class="card-description">
+                        Smart dog collar with ESP32 microcontroller. Features WiFi network scanning 
+                        and logging, Bluetooth device detection, and a custom mobile interface for 
+                        monitoring. Great for network auditing and IoT experimentation.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag small">ESP32</span>
+                        <span class="tech-tag small">WiFi Scanning</span>
+                        <span class="tech-tag small">Bluetooth</span>
+                        <span class="tech-tag small">Arduino</span>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="/static/images/ops-media/collar_interface.jpg" alt="Sabaka Collar Interface" class="gallery-img">
+                        <img src="/static/images/ops-media/collar_interface2.jpg" alt="Sabaka Collar Interface 2" class="gallery-img">
+                    </div>
+                    <div class="media-embed">
+                        <video controls preload="metadata">
+                            <source src="/static/images/ops-media/collar.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Project Card: Sabaka Collar (Ops Version) -->
+                <div class="project-card featured-card ops-only">
                     <div class="card-header">
                         <span class="project-icon">🐕</span>
                         <h3>Sabaka EW Collar</h3>
@@ -452,7 +481,7 @@
                     </div>
                 </div>
 
-                <!-- Project Card: Vape Breathalyzer -->
+                <!-- Project Card: Vape Breathalyzer (Shows in both modes) -->
                 <div class="project-card">
                     <div class="card-header">
                         <span class="project-icon">🚬</span>
